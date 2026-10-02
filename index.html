@@ -1,74 +1,572 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Japan Honeymoon — Travel Guide</title>
+  <title>Japan Honeymoon — رحلة اليابان الخاصة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Noto+Serif+JP:wght@600&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
-    body, html {
-      width: 100%;
+
+    :root {
+      --bg-base: #f5f0e6;
+      --navy-deep: #132238;
+      --navy-light: #203554;
+      --vermilion: #d64933;
+      --card-cream: #fbf8f2;
+      --border-warm: rgba(21, 37, 66, 0.08);
+      --shadow-card: 0 6px 18px rgba(19, 34, 56, 0.08);
+      --shadow-hover: 0 16px 32px rgba(19, 34, 56, 0.16);
+    }
+
+    body {
+      background-color: var(--bg-base);
+      /* Modern Japanese subtle geometric pattern background */
+      background-image: 
+        radial-gradient(circle at 100% 150%, rgba(214, 73, 51, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 0% 0%, rgba(19, 34, 56, 0.04) 0%, transparent 40%),
+        url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23132238' fill-opacity='0.025' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+      font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--navy-deep);
       min-height: 100vh;
-      background-color: #e9dec9;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       overflow-x: hidden;
       scroll-behavior: smooth;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .page-container {
+
+    /* Container */
+    .page-wrapper {
+      width: 100%;
+      max-width: 960px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 12px 60px;
+      gap: 28px;
+    }
+
+    /* Posters section */
+    .posters-container {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 16px 12px 32px;
       gap: 24px;
     }
+
     .poster-section {
       width: 100%;
-      max-width: 600px;
+      max-width: 580px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
+
     .poster-img {
       width: 100%;
       height: auto;
       max-height: 94vh;
       object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      box-shadow: 0 12px 36px rgba(19, 34, 56, 0.14);
       display: block;
+      border: 1px solid rgba(255, 255, 255, 0.6);
     }
-    @media (max-width: 480px) {
-      .page-container {
-        padding: 10px 6px 24px;
-        gap: 16px;
+
+    /* Modern Japanese Section Divider */
+    .japan-divider {
+      width: 100%;
+      max-width: 580px;
+      margin: 20px 0 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .japan-divider::before,
+    .japan-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(19, 34, 56, 0.2), transparent);
+    }
+
+    .japan-crest {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(214, 73, 51, 0.1);
+      color: var(--vermilion);
+      font-size: 1rem;
+      border: 1px solid rgba(214, 73, 51, 0.25);
+    }
+
+    /* Needs Section Header */
+    .needs-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .needs-header {
+      text-align: center;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .japan-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--vermilion);
+      background: rgba(214, 73, 51, 0.08);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      font-family: 'Noto Serif JP', serif, 'Tajawal';
+    }
+
+    .needs-title {
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: var(--navy-deep);
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+
+    .needs-subtitle {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #5a6e87;
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Desktop rows */
+    .row-four, .row-three {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+    }
+
+    /* Card styling */
+    .poster-card {
+      background: var(--card-cream);
+      border-radius: 14px;
+      border: 1px solid var(--border-warm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      width: 200px;
+      cursor: pointer;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.28s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.28s cubic-bezier(0.2, 0, 0.2, 1);
+      user-select: none;
+    }
+
+    .poster-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .poster-card:active {
+      transform: scale(0.97);
+    }
+
+    .card-image-wrap {
+      width: 100%;
+      aspect-ratio: 128 / 191;
+      background: #f1ebd9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      image-rendering: -webkit-optimize-contrast;
+      transition: transform 0.3s ease;
+    }
+
+    .poster-card:hover .card-image-wrap img {
+      transform: scale(1.04);
+    }
+
+    .card-info {
+      background: #ffffff;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(21, 37, 66, 0.06);
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+    }
+
+    .card-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(19, 34, 56, 0.05);
+      color: var(--navy-deep);
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+
+    .poster-card:hover .card-arrow {
+      background: var(--navy-deep);
+      color: #fff;
+      transform: translateX(-3px);
+    }
+
+    /* Interactive Modal / Drawer */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(19, 34, 56, 0.5);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: #ffffff;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 440px;
+      padding: 26px 22px;
+      box-shadow: 0 24px 48px rgba(19, 34, 56, 0.22);
+      transform: translateY(20px) scale(0.96);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f0e9dc;
+    }
+
+    .modal-header h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--navy-deep);
+    }
+
+    .close-btn {
+      background: #f4eee2;
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.15rem;
+      color: var(--navy-deep);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .close-btn:hover {
+      background: #e8ded0;
+      transform: rotate(90deg);
+    }
+
+    .modal-body {
+      padding: 28px 16px;
+      text-align: center;
+      color: #64748b;
+      font-size: 1.05rem;
+      background: #faf6f0;
+      border-radius: 12px;
+      border: 1px dashed #e2d7c5;
+    }
+
+    /* Mobile Responsive Optimizations */
+    @media (max-width: 768px) {
+      .page-wrapper {
+        padding: 12px 8px 48px;
+        gap: 20px;
       }
+
       .poster-img {
         max-height: 96vh;
-        border-radius: 6px;
+        border-radius: 8px;
+      }
+
+      .needs-title {
+        font-size: 1.7rem;
+      }
+
+      .needs-subtitle {
+        font-size: 0.95rem;
+      }
+
+      /* Mobile 2 cards per row, 7th centered */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        max-width: 440px;
+      }
+
+      .row-four, .row-three {
+        display: contents;
+      }
+
+      .poster-card {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      .poster-card:nth-child(7) {
+        grid-column: 1 / span 2;
+        max-width: 190px;
+        margin: 0 auto;
+      }
+
+      .card-info {
+        padding: 9px 10px;
+      }
+
+      .card-title {
+        font-size: 0.88rem;
+      }
+
+      .card-arrow {
+        width: 20px;
+        height: 20px;
+        font-size: 0.75rem;
+      }
+
+      /* Mobile Bottom Sheet Modal */
+      .modal-overlay {
+        align-items: flex-end;
+        padding: 0;
+      }
+
+      .modal-card {
+        max-width: 100%;
+        border-radius: 22px 22px 0 0;
+        padding: 22px 18px 36px;
+        transform: translateY(100%);
+      }
+
+      .modal-overlay.active .modal-card {
+        transform: translateY(0);
       }
     }
   </style>
 </head>
 <body>
-  <div class="page-container">
-    <section class="poster-section">
-      <img src="cover.png" alt="Japan Honeymoon Travel Guide, 29 Nov - 18 Dec 2026" class="poster-img" />
+
+  <div class="page-wrapper">
+    <!-- قسم البوسترات الرئيسية -->
+    <div class="posters-container">
+      <!-- البوستر الأول: الغلاف -->
+      <section class="poster-section">
+        <img src="cover.png" alt="Japan Honeymoon Travel Guide, 29 Nov - 18 Dec 2026" class="poster-img" />
+      </section>
+
+      <!-- البوستر الثاني: مسار وأيام الرحلة -->
+      <section class="poster-section">
+        <img src="route.jpg" alt="Japan Trip Route & Itinerary Poster" class="poster-img" />
+      </section>
+    </div>
+
+    <!-- فاصل بطابع ياباني حديث -->
+    <div class="japan-divider">
+      <span class="japan-crest">✦</span>
+    </div>
+
+    <!-- قسم احتياجات الرحلة مباشرة تحت أيام الرحلة -->
+    <section class="needs-section">
+      <header class="needs-header">
+        <span class="japan-tag">Trip Essentials</span>
+        <h2 class="needs-title">احتياجات الرحلة</h2>
+        <p class="needs-subtitle">كل ما تحتاجه لرحلتك إلى اليابان</p>
+      </header>
+
+      <div class="gallery-grid">
+        <!-- الصف الأول: 4 بطاقات -->
+        <div class="row-four">
+          <!-- البطاقة 1 -->
+          <article class="poster-card" onclick="openModal('إجراءات الدخول')">
+            <div class="card-image-wrap">
+              <img src="cards/card_1.png" alt="إجراءات الدخول" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-title">إجراءات الدخول</span>
+              <span class="card-arrow">←</span>
+            </div>
+          </article>
+
+          <!-- البطاقة 2 -->
+          <article class="poster-card" onclick="openModal('أهم التطبيقات')">
+            <div class="card-image-wrap">
+              <img src="cards/card_2.png" alt="أهم التطبيقات" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-title">أهم التطبيقات</span>
+              <span class="card-arrow">←</span>
+            </div>
+          </article>
+
+          <!-- البطاقة 3 -->
+          <article class="poster-card" onclick="openModal('الإنترنت وeSIM')">
+            <div class="card-image-wrap">
+              <img src="cards/card_3.png" alt="الإنترنت وeSIM" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-title">الإنترنت وeSIM</span>
+              <span class="card-arrow">←</span>
+            </div>
+          </article>
+
+          <!-- البطاقة 4 -->
+          <article class="poster-card" onclick="openModal('الدفع والكاش')">
+            <div class="card-image-wrap">
+              <img src="cards/card_4.png" alt="الدفع والكاش" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-title">الدفع والكاش</span>
+              <span class="card-arrow">←</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- الصف الثاني: 3 بطاقات في المنتصف -->
+        <div class="row-three">
+          <!-- البطاقة 5 -->
+          <article class="poster-card" onclick="openModal('المواصلات وSuica')">
+            <div class="card-image-wrap">
+              <img src="cards/card_5.png" alt="المواصلات وSuica" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-title">المواصلات وSuica</span>
+              <span class="card-arrow">←</span>
+            </div>
+          </article>
+
+          <!-- البطاقة 6 -->
+          <article class="poster-card" onclick="openModal('الكهرباء والتجهيزات')">
+            <div class="card-image-wrap">
+              <img src="cards/card_6.png" alt="الكهرباء والتجهيزات" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-title">الكهرباء والتجهيزات</span>
+              <span class="card-arrow">←</span>
+            </div>
+          </article>
+
+          <!-- البطاقة 7 -->
+          <article class="poster-card" onclick="openModal('البقالة اليابانية')">
+            <div class="card-image-wrap">
+              <img src="cards/card_7.png" alt="البقالة اليابانية" loading="lazy">
+            </div>
+            <div class="card-info">
+              <span class="card-title">البقالة اليابانية</span>
+              <span class="card-arrow">←</span>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
-    <section class="poster-section">
-      <img src="route.jpg" alt="Japan Trip Route & Itinerary Poster" class="poster-img" />
-    </section>
-  
-    <div style="margin-top: 10px; text-align: center;">
-      <a href="needs.html" style="display: inline-flex; align-items: center; gap: 8px; background: #152542; color: #fff; text-decoration: none; font-weight: 700; font-size: 1rem; padding: 12px 24px; border-radius: 30px; box-shadow: 0 4px 14px rgba(21, 37, 66, 0.2); transition: transform 0.2s;">
-        <span>الانتقال إلى احتياجات الرحلة</span>
-        <span>←</span>
-      </a>
+  </div>
+
+  <!-- نافذة المعاينة (Modal / Bottom Sheet) -->
+  <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalTitle">عنوان القسم</h3>
+        <button class="close-btn" onclick="closeModal()" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="modal-body">
+        ستُضاف معلومات هذا القسم هنا
+      </div>
     </div>
   </div>
+
+  <script>
+    function openModal(title) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function handleOverlayClick(e) {
+      if (e.target.id === 'modalOverlay') {
+        closeModal();
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
