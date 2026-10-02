@@ -612,6 +612,33 @@
         transition-duration: 0.01ms !important;
       }
     }
+  
+    /* Readable reference content with a fixed header and scrollable body. */
+    .modal-sheet, .modal-card { max-width: 640px; max-height: 88vh; max-height: 88dvh; overflow: hidden; }
+    .modal-header, .sheet-handle { flex-shrink: 0; }
+    .modal-body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; text-align: right; padding: 18px; line-height: 1.85; font-size: 1rem; font-weight: 500; border: 1px solid #e4e9ef; background: #fffdf8; -webkit-overflow-scrolling: touch; }
+    .info-section + .info-section { margin-top: 22px; }
+    .modal-body h4 { color: #152542; font-size: 1.08rem; margin-bottom: 8px; font-weight: 800; }
+    .modal-body ul, .modal-body ol { padding-inline-start: 24px; }
+    .modal-body li + li { margin-top: 8px; }
+    .info-note { background: #fff0d8; border-inline-start: 3px solid #c48b28; border-radius: 8px; padding: 12px; margin: 18px 0; color: #59441b; }
+    .info-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .info-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 12px; border: 1px solid #cbd9e6; border-radius: 10px; background: #edf4fa; color: #173e65; font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+    .info-links a:hover { background: #dbeaf6; }
+    .product-row { border-bottom: 1px solid #e5e9ef; padding: 16px 0; }
+    .product-shop { display: inline-block; color: #2e7d5b; font-size: .85rem; font-weight: 700; }
+    .product-name { font-size: .88rem; color: #66758a; overflow-wrap: anywhere; margin-bottom: 4px; }
+    .info-footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid #e5e9ef; color: #64748b; font-size: .8rem; }
+    .close-btn { flex-shrink: 0; width: 44px; height: 44px; }
+    :focus-visible { outline: 3px solid #235789; outline-offset: 3px; }
+    .folder-name { white-space: normal; }
+    @media (max-width: 580px) {
+      .modal-sheet, .modal-card { max-height: 90vh; max-height: 90dvh; padding-bottom: max(18px, env(safe-area-inset-bottom)); }
+      .modal-body { padding: 14px; }
+      .modal-title { font-size: 1.15rem; }
+    }
+    @media (max-width: 340px) { .needs-page-frame { aspect-ratio: auto; min-height: 600px; } }
+
   </style>
 </head>
 <body>
@@ -748,7 +775,7 @@
   </main>
 
   <!-- ورقة الملف المنبثقة (Modal / Bottom Sheet) -->
-  <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)" role="dialog" aria-modal="true">
+  <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
     <div class="modal-sheet">
       <div class="sheet-handle"></div>
       <div class="modal-header">
@@ -758,37 +785,56 @@
         </div>
         <button class="close-btn" onclick="closeFolder()" aria-label="إغلاق">✕</button>
       </div>
-      <div class="modal-body">
-        ستُضاف معلومات هذا القسم هنا
-      </div>
+      <div class="modal-body" id="modalBody" tabindex="0"></div>
     </div>
   </div>
 
   <script>
+    const travelSections = {
+  "إجراءات الدخول": "<section class=\"info-section\"><h4>قبل السفر</h4><ul><li>جهّزوا الجواز والتأشيرة المطلوبة حسب الجنسية، وتذاكر الطيران وحجوزات الفنادق في نسخة يسهل فتحها.</li><li>سجّلوا بيانات الوصول عبر Visit Japan Web قبل السفر؛ هذه الخدمة لإجراءات الهجرة والجمارك وليست تأشيرة.</li></ul></section><section class=\"info-section\"><h4>Visit Japan Web — خطوة بخطوة</h4><ol><li>افتحوا الموقع الرسمي وأنشئوا حسابًا أو سجّلوا الدخول.</li><li>أضيفوا بيانات كل مسافر كما تظهر في الجواز.</li><li>سجّلوا رحلة الوصول: التاريخ، رقم الرحلة، ومطار ناريتا، وبيانات أول فندق: Dai-ichi Hotel Tokyo. انسخوا العنوان من تأكيد الحجز.</li><li>أكملوا أسئلة الهجرة والتصريح الجمركي، ثم جهّزوا رمز QR الخاص بكل مسافر. احفظوا نسخة يمكن الوصول إليها بسهولة.</li></ol></section><section class=\"info-section\"><h4>عند الوصول إلى ناريتا T2</h4><ol><li>اتبعوا لوحات Arrivals ثم Immigration، وجهّزوا الجواز ورمز QR.</li><li>استلموا الشنط من Baggage Claim، ثم أكملوا إجراءات Customs.</li><li>بعد الجمارك: اسحبوا كاشًا بسيطًا عند الحاجة، ثم توجّهوا لنقطة لقاء السيارة الخاصة بحسب تأكيد حجز النقل.</li></ol></section><p class=\"info-note\">لا تحملوا معكم لحومًا أو منتجات لحوم أو فواكه وخضروات طازجة إلى اليابان؛ تخضع هذه المواد لقيود الحجر الزراعي والبيطري.</p><div class=\"info-links\"><a href=\"https://www.vjw.digital.go.jp/\" target=\"_blank\" rel=\"noopener noreferrer\">فتح Visit Japan Web ↗</a><a href=\"https://services.digital.go.jp/en/visit-japan-web/guide/\" target=\"_blank\" rel=\"noopener noreferrer\">دليل التسجيل الرسمي ↗</a><a href=\"https://www.maff.go.jp/pps/j/pqaqinfo_en.html\" target=\"_blank\" rel=\"noopener noreferrer\">قيود إدخال الأغذية ↗</a></div>",
+  "أهم التطبيقات": "<p class=\"info-note\">حمّلوا التطبيقات وجهّزوا الحسابات قبل السفر. روابط الخدمات أدناه تقود إلى المواقع الرسمية؛ اختاروا رابط متجر جهازكم منها.</p><section class=\"info-section\"><h4>Google Maps</h4><p>للمشي والقطارات: اختاروا النقل العام، وراجعوا وقت الانطلاق واسم الخط ورقم مخرج المحطة. احفظوا الفنادق والأماكن في قائمة.</p><div class=\"info-links\"><a href=\"https://www.google.com/maps\" target=\"_blank\" rel=\"noopener noreferrer\">الموقع وروابط التطبيق ↗</a></div></section><section class=\"info-section\"><h4>Google Translate</h4><p>لترجمة قوائم الطعام واللافتات بالكاميرا. حمّلوا اللغة اليابانية للترجمة دون اتصال قبل السفر؛ بعض الميزات تحتاج إنترنت.</p><div class=\"info-links\"><a href=\"https://translate.google.com/about/\" target=\"_blank\" rel=\"noopener noreferrer\">الموقع وروابط التطبيق ↗</a></div></section><section class=\"info-section\"><h4>DiDi</h4><p>لطلب تاكسي عندما تحتاجونه. جهّزوا الحساب ورقم الهاتف، وتأكدوا من نقطة الالتقاء وتوفر الخدمة في المنطقة.</p><div class=\"info-links\"><a href=\"https://didimobility.co.jp/\" target=\"_blank\" rel=\"noopener noreferrer\">الموقع وروابط التطبيق ↗</a></div></section><section class=\"info-section\"><h4>Klook</h4><p>لإدارة الحجوزات والتذاكر التي اشتريتموها عبر Klook. افتحوا القسيمة واقرؤوا تعليمات الاستخدام والتاريخ والحديقة المحددة.</p><div class=\"info-links\"><a href=\"https://www.klook.com/\" target=\"_blank\" rel=\"noopener noreferrer\">الموقع وروابط التطبيق ↗</a></div></section><section class=\"info-section\"><h4>Tokyo Disney Resort</h4><p>لخريطة ديزني سي وأوقات الانتظار وخدمات الحديقة. سجّلوا الدخول وجهّزوا تسجيل تذاكركم وفق تعليمات التطبيق.</p><div class=\"info-links\"><a href=\"https://www.tokyodisneyresort.jp/en/tdr/app.html\" target=\"_blank\" rel=\"noopener noreferrer\">الموقع وروابط التطبيق ↗</a></div></section><section class=\"info-section\"><h4>Universal Studios Japan</h4><p>لخريطة الحديقة وأوقات الانتظار وخدمات الدخول الموقّت للمناطق. الطلبات المتاحة تعتمد على يوم الزيارة والتوفر؛ التطبيق لا يضمن دخول كل منطقة.</p><div class=\"info-links\"><a href=\"https://www.usj.co.jp/web/en/us/enjoy/app\" target=\"_blank\" rel=\"noopener noreferrer\">الموقع وروابط التطبيق ↗</a></div></section>",
+  "الإنترنت وeSIM": "<section class=\"info-section\"><h4>إنترنت بدون شريحة فعلية</h4><p>التوجه لهذه الرحلة هو eSIM تُشترى أونلاين وتُثبت على الجوال، دون استلام شريحة من المطار. الخيار الذي ناقشناه: <strong>Holafly Japan ببيانات غير محدودة</strong>؛ الشراء يعتمد على توافق كل جهاز.</p></section><section class=\"info-section\"><h4>قبل الشراء</h4><ul><li>افحصوا موديل كل جوال في قائمة توافق eSIM، وتأكدوا أنه غير مقفل على شركة اتصالات.</li><li>اختاروا مدة تغطي أيام وجودكم في اليابان بحسب تذاكر الوصول والمغادرة.</li><li>راجعوا حدود مشاركة الإنترنت وشروط الاستخدام العادل؛ عبارة «غير محدود» لا تعني مشاركة غير محدودة مع الأجهزة الأخرى.</li></ul></section><section class=\"info-section\"><h4>قبل الإقلاع</h4><ol><li>اشتروا الخطة من الموقع الرسمي واحتفظوا برسالة التركيب.</li><li>ثبّتوا eSIM على اتصال Wi-Fi، وفق تعليمات المزود، وسمّوها Japan.</li><li>لا تحذفوا eSIM بعد تثبيتها؛ إعادة التثبيت تعتمد على شروط المزود.</li></ol></section><section class=\"info-section\"><h4>بعد الوصول</h4><ol><li>اختاروا Japan كشريحة بيانات الجوال.</li><li>فعّلوا تجوال البيانات لهذه الشريحة وفق تعليمات Holafly، وأوقفوه على شريحتكم الأساسية.</li><li>أوقفوا التبديل التلقائي للبيانات بين الشرائح لتجنب استخدام شريحتكم الأساسية، واختبروا Google Maps.</li></ol></section><p class=\"info-note\">خطة السفر للبيانات؛ لا تفترضوا أنها تتضمن رقمًا محليًا أو مكالمات وSMS. احتفظوا بالشريحة الأساسية لاستقبال رموز التحقق وفق رسوم شركة الاتصالات.</p><div class=\"info-links\"><a href=\"https://esim.holafly.com/esim-japan/\" target=\"_blank\" rel=\"noopener noreferrer\">خطة اليابان والتوافق والتعليمات ↗</a></div>",
+  "الدفع والكاش": "<section class=\"info-section\"><h4>بطاقة + مبلغ نقدي بسيط</h4><ul><li>استخدموا بطاقة دولية في الأماكن التي تقبلها، واحتفظوا بالبطاقة الفعلية والرقم السري.</li><li>احملوا بعض الين للمحلات الصغيرة والمواقف التي لا تقبل البطاقات.</li><li>تأكدوا قبل السفر من تفعيل الاستخدام الدولي ومعرفة رسوم البنك وحدود السحب.</li></ul></section><section class=\"info-section\"><h4>السحب عند الوصول</h4><ol><li>بعد الجمارك وقبل مقابلة السائق، اسحبوا مبلغًا بسيطًا إذا احتجتم؛ لا يلزم سحب ميزانية الرحلة كاملة في المطار.</li><li>ابحثوا عن صراف يدعم البطاقات الأجنبية مثل Seven Bank، واختاروا اللغة المناسبة.</li><li>راجعوا رسوم الصراف ورسوم البنك قبل تأكيد العملية، واحتفظوا بالإيصال.</li></ol></section><section class=\"info-section\"><h4>العملة عند الدفع</h4><p>إذا عرض الجهاز الدفع بالين أو بعملة بطاقتكم، اختاروا <strong>JPY — الين الياباني</strong> لتجنب تحويل العملة الذي يقدمه التاجر. سعر التحويل ورسوم بطاقتكم تحددها جهة إصدارها.</p></section><div class=\"info-links\"><a href=\"https://www.sevenbank.co.jp/intlcard/index2.html\" target=\"_blank\" rel=\"noopener noreferrer\">صرافات Seven Bank والبطاقات المدعومة ↗</a><a href=\"https://www.japan.travel/en/plan/credit-cards/\" target=\"_blank\" rel=\"noopener noreferrer\">دليل الدفع الرسمي ↗</a></div>",
+  "المواصلات وSuica": "<section class=\"info-section\"><h4>ما هي Suica / PASMO؟</h4><p>بطاقة رصيد للمواصلات المحلية في الشبكات المتوافقة، ويمكن استخدامها في متاجر وآلات بيع تحمل شعار قبولها. لا تحتاجون شراء Suica وPASMO معًا.</p></section><section class=\"info-section\"><h4>اختاروا بحسب الجوال</h4><ul><li>على iPhone المتوافق: يمكن إضافة Suica إلى Apple Wallet، ثم شحنها بوسيلة دفع مقبولة. إذا لم ينجح الشحن، استخدموا البطاقة الفعلية.</li><li>على الأجهزة الأخرى: لا تفترضوا أن دعم NFC وحده يكفي؛ بطاقة فعلية خيار عملي عند عدم دعم النظام.</li><li>لكل مسافر بطاقة مستقلة. بطاقة Welcome Suica الفعلية صالحة 28 يومًا من الشراء، ولا يُسترد رصيدها المتبقي؛ اشحنوها بمبالغ تناسب الحاجة.</li></ul></section><section class=\"info-section\"><h4>طريقة الاستخدام</h4><ol><li>افتحوا Google Maps وحددوا خط القطار والمخرج المناسب.</li><li>مرروا نفس البطاقة أو نفس الجهاز عند بوابة الدخول والخروج.</li><li>إذا ظهر نقص رصيد، استخدموا جهاز الشحن أو تسوية الأجرة قرب البوابات.</li></ol></section><p class=\"info-note\">Suica ليست تذكرة شينكانسن أو حجز مقعد. الانتقالات بين المدن وبعض القطارات الخاصة تحتاج تذاكر أو ترتيبات منفصلة؛ لا تفترضوا أن تمرير البطاقة وحده يكفي.</p><div class=\"info-links\"><a href=\"https://www.jreast.co.jp/en/multi/welcomesuica/welcomesuica.html\" target=\"_blank\" rel=\"noopener noreferrer\">Welcome Suica الرسمية ↗</a><a href=\"https://support.apple.com/en-sg/HT207154\" target=\"_blank\" rel=\"noopener noreferrer\">Suica في Apple Wallet ↗</a></div>",
+  "الكهرباء والتجهيزات": "<section class=\"info-section\"><h4>المقبس والجهد</h4><p>جهّزوا محوّل مقابس <strong>Type A</strong> بسنّين مسطحين. كهرباء اليابان <strong>100V</strong>؛ محوّل شكل القابس لا يغيّر الجهد.</p></section><section class=\"info-section\"><h4>افحصوا الأجهزة</h4><ul><li>إذا كُتب على الشاحن Input: 100–240V، فهو يدعم جهد اليابان عادةً مع محوّل القابس المناسب.</li><li>لا تفترضوا أن أجهزة الشعر المخصصة لـ220–240V تعمل على 100V؛ قد لا تعمل أو يكون أداؤها ضعيفًا. افحصوا تعليمات المصنع، أو استخدموا الجهاز المتوفر في الفندق.</li></ul></section><section class=\"info-section\"><h4>قائمة التجهيز</h4><ul><li>شواحن الجوالات ومحوّل Type A وباوربانك.</li><li>ملابس دافئة بطبقات، وجاكيت، وشوز مريح للمشي؛ الرحلة في أواخر نوفمبر وديسمبر.</li><li>مظلة صغيرة، ومحفظة للعملات المعدنية.</li><li>نسخ سهلة الوصول من الجواز والحجوزات والتذاكر وQR، مع حفظ الملفات المهمة للاستخدام دون اتصال.</li></ul></section><div class=\"info-links\"><a href=\"https://www.japan.travel/en/plan/plug-and-electricity/\" target=\"_blank\" rel=\"noopener noreferrer\">دليل الكهرباء الرسمي ↗</a></div>",
+  "البقالة اليابانية": "<section class=\"info-section\"><h4>تجارب خفيفة من الكونبيني</h4><p>هذه اختياراتنا من 7-Eleven وFamilyMart للتجربة أثناء الرحلة. استخدموا الاسم الإنجليزي أو الياباني للتعرّف على المنتج، أو اسألوا الموظف.</p></section><p class=\"info-note\">التوفر والتغليف والنكهات تختلف حسب الفرع والموسم. هذه قائمة تجارب وليست إثباتًا للحلال؛ راجعوا مكونات العبوة وأي كحول أو جيلاتين أو مشتقات لحوم، واسألوا عند عدم الوضوح.</p><section class=\"product-row\"><span class=\"product-shop\">7-Eleven</span><h4>ساندويتش البيض</h4><p class=\"product-name\" dir=\"auto\">THE Egg Sandwich / たまごサンド</p><p>ساندويتش البيض الياباني المعروف.</p></section><section class=\"product-row\"><span class=\"product-shop\">7-Eleven</span><h4>أونيغيري السلمون</h4><p class=\"product-name\" dir=\"auto\">Salmon Onigiri / 鮭おにぎり</p><p>كرة رز بالنوري وحشوة السلمون؛ اختاروا الحشوة من الملصق.</p></section><section class=\"product-row\"><span class=\"product-shop\">7-Eleven</span><h4>الميلون بان</h4><p class=\"product-name\" dir=\"auto\">Saku-Fuwa Melon Pan / メロンパン</p><p>خبز حلو بقشرة تشبه البسكويت.</p></section><section class=\"product-row\"><span class=\"product-shop\">7-Eleven</span><h4>سموذي</h4><p class=\"product-name\" dir=\"auto\">7-Eleven Smoothie / スムージー</p><p>اختاروا كوب السموذي من الفريزر وادفعوا ثم استخدموا آلة التحضير حسب التعليمات.</p></section><section class=\"product-row\"><span class=\"product-shop\">7-Eleven</span><h4>آيسكريم الفانيلا</h4><p class=\"product-name\" dir=\"auto\">Gold Madagascar Vanilla Waffle Cone</p><p>الخيار الذي اخترناه لتجربة مخروط الفانيلا؛ الاسم والتوفر قد يتغيران.</p></section><section class=\"product-row\"><span class=\"product-shop\">7-Eleven</span><h4>كريم بف</h4><p class=\"product-name\" dir=\"auto\">Double Cream Puff / シュークリーム</p><p>حلوى محشوة بالكريمة.</p></section><section class=\"product-row\"><span class=\"product-shop\">7-Eleven</span><h4>دايفوكو السمسم</h4><p class=\"product-name\" dir=\"auto\">Golden Sesame Daifuku</p><p>من خيارات الموتشي التي اخترناها؛ ابحثوا عن الاسم أو بديل مماثل.</p></section><section class=\"product-row\"><span class=\"product-shop\">FamilyMart</span><h4>كيك باومكوخن المبرد</h4><p class=\"product-name\" dir=\"auto\">Chilled Moist Baumkuchen</p><p>كيك حلقات من قسم الحلويات المبردة؛ النسخة البيضاء كانت ضمن اختياراتنا.</p></section><section class=\"product-row\"><span class=\"product-shop\">متاجر الكونبيني</span><h4>موتشي الآيسكريم</h4><p class=\"product-name\" dir=\"auto\">Yukimi Daifuku / 雪見だいふく</p><p>آيسكريم داخل غلاف موتشي، من قسم المجمّدات.</p></section><section class=\"product-row\"><span class=\"product-shop\">متاجر الكونبيني</span><h4>بانكيك</h4><p class=\"product-name\" dir=\"auto\">Pancakes with Maple Syrup & Margarine</p><p>بانكيك جاهز بالشراب والمارغرين.</p></section><section class=\"product-row\"><span class=\"product-shop\">متاجر الكونبيني</span><h4>سناك البطاطس</h4><p class=\"product-name\" dir=\"auto\">Jagarico Salad / じゃがりこ サラダ</p><p>أصابع بطاطس مقرمشة في كوب.</p></section><div class=\"info-links\"><a href=\"https://www.sej.co.jp/products/\" target=\"_blank\" rel=\"noopener noreferrer\">منتجات 7-Eleven ↗</a><a href=\"https://www.sej.co.jp/products/smoothie/\" target=\"_blank\" rel=\"noopener noreferrer\">طريقة السموذي ↗</a><a href=\"https://www.family.co.jp/goods.html\" target=\"_blank\" rel=\"noopener noreferrer\">منتجات FamilyMart ↗</a></div>"
+};
     let savedScrollY = 0;
+    let lastTrigger = null;
+    const overlay = document.getElementById('modalOverlay');
 
     function openFolder(title, icon) {
+      if (!travelSections[title]) return;
       savedScrollY = window.scrollY;
+      lastTrigger = document.activeElement;
       document.getElementById('modalTitle').textContent = title;
       document.getElementById('modalIcon').textContent = icon;
-      document.getElementById('modalOverlay').classList.add('active');
+      const body = document.getElementById('modalBody');
+      body.innerHTML = travelSections[title] + '<p class="info-footer">آخر مراجعة للمعلومات والروابط: 2 أكتوبر 2026. راجعوا التفاصيل المتغيرة قبل السفر.</p>';
+      body.scrollTop = 0;
+      overlay.classList.add('active');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.querySelector('main').inert = true;
       document.body.style.position = 'fixed';
       document.body.style.top = '-' + savedScrollY + 'px';
       document.body.style.width = '100%';
+      overlay.querySelector('.close-btn').focus({preventScroll: true});
     }
 
     function closeFolder() {
-      document.getElementById('modalOverlay').classList.remove('active');
+      if (!overlay.classList.contains('active')) return;
+      overlay.classList.remove('active');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.querySelector('main').inert = false;
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
       window.scrollTo(0, savedScrollY);
+      if (lastTrigger) lastTrigger.focus({preventScroll: true});
     }
 
     function handleOverlayClick(e) {
-      if (e.target.id === 'modalOverlay') {
-        closeFolder();
-      }
+      if (e.target === overlay) closeFolder();
     }
 
     function handleKey(e, title, icon) {
@@ -799,10 +845,16 @@
     }
 
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeFolder();
+      if (!overlay.classList.contains('active')) return;
+      if (e.key === 'Escape') closeFolder();
+      if (e.key === 'Tab') {
+        const controls = Array.from(overlay.querySelectorAll('button, a[href], [tabindex="0"]'));
+        const first = controls[0], last = controls[controls.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
     });
+
   </script>
 </body>
 </html>
