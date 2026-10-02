@@ -6,7 +6,7 @@
   <title>Japan Honeymoon — رحلة اليابان الخاصة</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -15,72 +15,61 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    :root {
-      --bg-canvas: #f2eee3;
-      --navy-main: #132238;
-      --vermilion: #c9432d;
-      --card-cream: #faf7f0;
-      --border-soft: rgba(19, 34, 56, 0.08);
-      --poster-radius: 12px;
-      --poster-shadow: 0 12px 36px rgba(19, 34, 56, 0.12);
-    }
-
     body {
-      background-color: var(--bg-canvas);
+      background-color: #f2eee3;
       background-image: 
-        radial-gradient(circle at 100% 100%, rgba(201, 67, 45, 0.035) 0%, transparent 40%),
-        radial-gradient(circle at 0% 0%, rgba(19, 34, 56, 0.035) 0%, transparent 40%),
+        radial-gradient(circle at 100% 100%, rgba(201, 67, 45, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 0% 0%, rgba(19, 34, 56, 0.04) 0%, transparent 40%),
         url("data:image/svg+xml,%3Csvg width='36' height='36' viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 0L36 18L18 36L0 18z' fill='%23132238' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
-      font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      color: var(--navy-main);
+      font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #132238;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px 12px 60px;
+      padding: 24px 12px 60px;
     }
 
-    /* Container matching all 3 poster pages */
     .posters-deck {
       width: 100%;
       max-width: 580px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 28px;
+      gap: 32px;
     }
 
-    /* Poster Frame — identical across all 3 pages */
+    /* كل إطار له نفس الأبعاد والطول بدقة 100% عبر aspect-ratio موحد */
     .poster-frame {
       width: 100%;
-      border-radius: var(--poster-radius);
-      box-shadow: var(--poster-shadow);
+      aspect-ratio: 736 / 1072;
+      border-radius: 14px;
+      box-shadow: 0 14px 38px rgba(19, 34, 56, 0.13);
       background: #fdfaf4;
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.85);
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      position: relative;
     }
 
     .poster-img {
       width: 100%;
-      height: auto;
-      max-height: 94vh;
-      object-fit: contain;
+      height: 100%;
+      object-fit: fill;
       display: block;
     }
 
-    /* Page 3: Needs Poster Canvas */
+    /* الصفحة 3: مطابقة في الطول والعرض والنسبة للبوسترين تماماً */
     .needs-canvas {
-      padding: 34px 22px 30px;
+      padding: 32px 24px 28px;
       background: linear-gradient(180deg, #fdfbf7 0%, #f7f3e8 100%);
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .needs-header {
       text-align: center;
-      margin-bottom: 24px;
+      flex-shrink: 0;
     }
 
     .tag-seal {
@@ -88,39 +77,40 @@
       font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 1.5px;
-      color: var(--vermilion);
+      color: #c9432d;
       background: rgba(201, 67, 45, 0.08);
       border: 1px solid rgba(201, 67, 45, 0.2);
       padding: 3px 12px;
       border-radius: 14px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       text-transform: uppercase;
     }
 
     .needs-title {
       font-size: 1.85rem;
       font-weight: 900;
-      color: var(--navy-main);
+      color: #132238;
       margin-bottom: 4px;
       letter-spacing: -0.5px;
     }
 
     .needs-subtitle {
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       font-weight: 500;
       color: #61728a;
     }
 
-    /* Gallery within Needs Canvas */
+    /* شبكة البطاقات داخل اللوحة */
     .mini-gallery {
       width: 100%;
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 14px;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 14px;
     }
 
-    /* Desktop Rows */
     .row-four, .row-three {
       display: flex;
       justify-content: center;
@@ -128,18 +118,17 @@
       width: 100%;
     }
 
-    /* Mini Poster Cards */
     .mini-card {
       background: #ffffff;
       border-radius: 10px;
-      border: 1px solid var(--border-soft);
+      border: 1px solid rgba(19, 34, 56, 0.08);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      width: 120px;
+      width: 122px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(19, 34, 56, 0.06);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 14px rgba(19, 34, 56, 0.06);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
       user-select: none;
     }
 
@@ -164,8 +153,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
     }
 
     .mini-info {
@@ -178,9 +165,9 @@
     }
 
     .mini-name {
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 800;
-      color: var(--navy-main);
+      color: #132238;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -189,12 +176,6 @@
     .mini-arrow {
       font-size: 0.7rem;
       color: #8b99ac;
-      transition: transform 0.2s, color 0.2s;
-    }
-
-    .mini-card:hover .mini-arrow {
-      transform: translateX(-2px);
-      color: var(--vermilion);
     }
 
     /* Modal / Bottom Sheet */
@@ -208,7 +189,7 @@
       justify-content: center;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.22s ease, visibility 0.22s ease;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
       z-index: 2000;
       padding: 16px;
     }
@@ -225,14 +206,6 @@
       max-width: 400px;
       padding: 24px 20px;
       box-shadow: 0 20px 44px rgba(19, 34, 56, 0.2);
-      transform: translateY(16px) scale(0.97);
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .modal-overlay.active .modal-box {
-      transform: translateY(0) scale(1);
     }
 
     .modal-top {
@@ -247,7 +220,7 @@
     .modal-top h3 {
       font-size: 1.2rem;
       font-weight: 800;
-      color: var(--navy-main);
+      color: #132238;
     }
 
     .close-btn {
@@ -261,7 +234,7 @@
       justify-content: center;
       cursor: pointer;
       font-size: 1.1rem;
-      color: var(--navy-main);
+      color: #132238;
     }
 
     .modal-content {
@@ -274,37 +247,33 @@
       border: 1px dashed #e2d7c5;
     }
 
-    /* Mobile specific adjustments */
+    /* على الجوال: تناسق تام في الأطوال مع الحفاظ على التوزيع الداخلي */
     @media (max-width: 580px) {
       body {
-        padding: 12px 8px 48px;
+        padding: 14px 8px 48px;
       }
 
       .posters-deck {
-        gap: 18px;
-      }
-
-      .poster-frame {
-        border-radius: 10px;
+        gap: 20px;
       }
 
       .needs-canvas {
-        padding: 24px 14px 24px;
+        padding: 18px 12px 14px;
       }
 
       .needs-title {
-        font-size: 1.55rem;
+        font-size: 1.35rem;
       }
 
       .needs-subtitle {
-        font-size: 0.9rem;
+        font-size: 0.82rem;
       }
 
-      /* 2 cards per row on mobile, last centered */
       .mini-gallery {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 8px;
+        margin-top: 8px;
       }
 
       .row-four, .row-three {
@@ -313,20 +282,23 @@
 
       .mini-card {
         width: 100%;
-        border-radius: 10px;
+        border-radius: 8px;
       }
 
       .mini-card:nth-child(7) {
         grid-column: 1 / span 2;
-        max-width: 160px;
+        max-width: 140px;
         margin: 0 auto;
       }
 
-      .mini-name {
-        font-size: 0.78rem;
+      .mini-info {
+        padding: 4px 6px;
       }
 
-      /* Bottom sheet on mobile */
+      .mini-name {
+        font-size: 0.68rem;
+      }
+
       .modal-overlay {
         align-items: flex-end;
         padding: 0;
@@ -336,11 +308,6 @@
         max-width: 100%;
         border-radius: 20px 20px 0 0;
         padding: 20px 16px 32px;
-        transform: translateY(100%);
-      }
-
-      .modal-overlay.active .modal-box {
-        transform: translateY(0);
       }
     }
   </style>
@@ -358,7 +325,7 @@
       <img src="route.jpg" alt="Japan Trip Route Poster" class="poster-img" />
     </article>
 
-    <!-- الصفحة 3: لوحة احتياجات الرحلة المتطابقة في المقاس والأبعاد -->
+    <!-- الصفحة 3: لوحة احتياجات الرحلة - متطابقة 100% في الطول والأبعاد -->
     <article class="poster-frame needs-canvas">
       <header class="needs-header">
         <span class="tag-seal">Trip Essentials</span>
@@ -367,7 +334,6 @@
       </header>
 
       <div class="mini-gallery">
-        <!-- الصف الأول: 4 بطاقات -->
         <div class="row-four">
           <div class="mini-card" onclick="openModal('إجراءات الدخول')">
             <div class="mini-img-wrap">
@@ -410,7 +376,6 @@
           </div>
         </div>
 
-        <!-- الصف الثاني: 3 بطاقات في المنتصف -->
         <div class="row-three">
           <div class="mini-card" onclick="openModal('المواصلات وSuica')">
             <div class="mini-img-wrap">
@@ -446,7 +411,6 @@
     </article>
   </main>
 
-  <!-- Modal / Bottom Sheet -->
   <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
     <div class="modal-box">
       <div class="modal-top">
