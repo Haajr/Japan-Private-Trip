@@ -21,13 +21,14 @@
         radial-gradient(circle at 100% 100%, rgba(201, 67, 45, 0.04) 0%, transparent 40%),
         radial-gradient(circle at 0% 0%, rgba(19, 34, 56, 0.04) 0%, transparent 40%),
         url("data:image/svg+xml,%3Csvg width='36' height='36' viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 0L36 18L18 36L0 18z' fill='%23132238' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
-      font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       color: #132238;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 24px 12px 60px;
+      overflow-x: hidden;
     }
 
     .posters-deck {
@@ -39,7 +40,7 @@
       gap: 32px;
     }
 
-    /* كل إطار له نفس الأبعاد والطول بدقة 100% عبر aspect-ratio موحد */
+    /* الإطارات الموحدة لبوسترات الرحلة */
     .poster-frame {
       width: 100%;
       aspect-ratio: 736 / 1072;
@@ -58,10 +59,44 @@
       display: block;
     }
 
-    /* الصفحة 3: مطابقة في الطول والعرض والنسبة للبوسترين تماماً */
-    .needs-canvas {
-      padding: 32px 24px 28px;
-      background: linear-gradient(180deg, #fdfbf7 0%, #f7f3e8 100%);
+    /* ========================================================
+       الصفحة الثالثة: احتياجات الرحلة (خلفية الفوانيس والمجلدات)
+       ======================================================== */
+    .needs-page-frame {
+      width: 100%;
+      aspect-ratio: 736 / 1072;
+      border-radius: 14px;
+      box-shadow: 0 14px 38px rgba(19, 34, 56, 0.13);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 26px 18px 24px;
+      
+      /* صورة الفوانيس تغطي الخلفية */
+      background-image: url('lanterns_bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* طبقة شفافة ناعمة لإبراز العناوين والمجلدات مع إبقاء الفوانيس ظاهرة بجمال */
+    .needs-page-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.45) 0%, rgba(245, 240, 230, 0.72) 100%);
+      backdrop-filter: blur(1.5px);
+      z-index: 1;
+    }
+
+    .needs-content-layer {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -72,126 +107,306 @@
       flex-shrink: 0;
     }
 
-    .tag-seal {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      color: #c9432d;
-      background: rgba(201, 67, 45, 0.08);
-      border: 1px solid rgba(201, 67, 45, 0.2);
-      padding: 3px 12px;
-      border-radius: 14px;
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(19, 34, 56, 0.88);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 14px;
+      border-radius: 20px;
       margin-bottom: 6px;
-      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     .needs-title {
       font-size: 1.85rem;
       font-weight: 900;
-      color: #132238;
-      margin-bottom: 4px;
+      color: #11223b;
+      margin-bottom: 2px;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
       letter-spacing: -0.5px;
     }
 
     .needs-subtitle {
       font-size: 0.95rem;
-      font-weight: 500;
-      color: #61728a;
+      font-weight: 700;
+      color: #1e3a5f;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
     }
 
-    /* شبكة البطاقات داخل اللوحة */
-    .mini-gallery {
+    /* ========================================================
+       شبكة المجلدات الورقية (Paper Folders)
+       ======================================================== */
+    .folders-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 14px;
       width: 100%;
-      flex-grow: 1;
+      margin-top: 10px;
+    }
+
+    /* المجلد السابع يتوسط بمفرده */
+    .folder-item:nth-child(7) {
+      grid-column: 1 / span 2;
+      max-width: 210px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* مجلد ورقي تفاعلي كامل */
+    .folder-item {
+      position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 14px;
-    }
-
-    .row-four, .row-three {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      width: 100%;
-    }
-
-    .mini-card {
-      background: #ffffff;
-      border-radius: 10px;
-      border: 1px solid rgba(19, 34, 56, 0.08);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      width: 122px;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(19, 34, 56, 0.06);
-      transition: transform 0.22s ease, box-shadow 0.22s ease;
       user-select: none;
+      transition: transform 0.28s cubic-bezier(0.2, 0, 0.2, 1);
+      animation: folderEnter 0.45s ease-out backwards;
     }
 
-    .mini-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 22px rgba(19, 34, 56, 0.14);
+    /* تأخير الدخول المتتابع */
+    .folder-item:nth-child(1) { animation-delay: 0.05s; }
+    .folder-item:nth-child(2) { animation-delay: 0.10s; }
+    .folder-item:nth-child(3) { animation-delay: 0.15s; }
+    .folder-item:nth-child(4) { animation-delay: 0.20s; }
+    .folder-item:nth-child(5) { animation-delay: 0.25s; }
+    .folder-item:nth-child(6) { animation-delay: 0.30s; }
+    .folder-item:nth-child(7) { animation-delay: 0.35s; }
+
+    @keyframes folderEnter {
+      from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
-    .mini-card:active {
-      transform: scale(0.97);
+    /* لسان المجلد العلوي (Folder Tab) */
+    .folder-tab {
+      width: 58px;
+      height: 12px;
+      border-radius: 6px 6px 0 0;
+      margin-right: 10px;
+      background: var(--folder-accent);
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.04);
+      transition: all 0.25s ease;
     }
 
-    .mini-img-wrap {
-      width: 100%;
-      aspect-ratio: 128 / 191;
-      background: #eee8d8;
-      overflow: hidden;
+    /* الورقة الداخلية التي تبرز من المجلد (Peeking Paper) */
+    .folder-paper {
+      position: absolute;
+      top: 4px;
+      left: 10px;
+      right: 10px;
+      height: 18px;
+      background: #ffffff;
+      border-radius: 4px 4px 0 0;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-bottom: none;
+      z-index: 2;
+      box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+      transition: transform 0.25s cubic-bezier(0.2, 0, 0.2, 1);
     }
 
-    .mini-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    /* خطوط وهمية على الورقة */
+    .folder-paper::after {
+      content: "";
+      position: absolute;
+      top: 5px;
+      right: 8px;
+      left: 8px;
+      height: 1px;
+      background: #e2e8f0;
+      box-shadow: 0 4px 0 #edf2f7;
     }
 
-    .mini-info {
-      background: #fff;
-      padding: 8px 6px;
+    /* جسم المجلد الأمامي */
+    .folder-body {
+      position: relative;
+      z-index: 3;
+      background: var(--folder-bg);
+      border: 1px solid var(--folder-border);
+      border-radius: 8px;
+      padding: 10px 10px 10px 8px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid rgba(19, 34, 56, 0.05);
+      gap: 8px;
+      box-shadow: 0 6px 14px var(--folder-shadow);
+      transition: all 0.28s cubic-bezier(0.2, 0, 0.2, 1);
+      overflow: hidden;
     }
 
-    .mini-name {
-      font-size: 0.74rem;
+    /* شريط لوني جانبي للمجلد */
+    .folder-body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 4px;
+      background: var(--folder-accent);
+    }
+
+    /* أيقونة المجلد */
+    .folder-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+      transition: transform 0.25s ease;
+    }
+
+    /* نص المجلد */
+    .folder-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .folder-name {
+      font-size: 0.84rem;
       font-weight: 800;
-      color: #132238;
+      color: #11223b;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .mini-arrow {
-      font-size: 0.7rem;
-      color: #8b99ac;
+    .folder-hint {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: #64748b;
     }
 
-    /* Modal / Bottom Sheet */
+    /* سهم فتح لطيف */
+    .folder-arrow {
+      color: var(--folder-accent);
+      font-size: 0.75rem;
+      opacity: 0.8;
+      transition: transform 0.2s ease;
+    }
+
+    /* ========================================================
+       تفاعل التمرير والضغط (Hover & Active)
+       ======================================================== */
+    @media (hover: hover) {
+      .folder-item:hover {
+        transform: translateY(-4px);
+      }
+      .folder-item:hover .folder-paper {
+        transform: translateY(-8px);
+      }
+      .folder-item:hover .folder-body {
+        box-shadow: 0 10px 22px var(--folder-shadow-hover);
+        border-color: var(--folder-accent);
+      }
+      .folder-item:hover .folder-icon {
+        transform: scale(1.08) rotate(-4deg);
+      }
+      .folder-item:hover .folder-arrow {
+        transform: translateX(-3px);
+      }
+    }
+
+    .folder-item:active {
+      transform: scale(0.97);
+    }
+    .folder-item:active .folder-paper {
+      transform: translateY(-4px);
+    }
+
+    /* ========================================================
+       ألوان المجلدات المستوحاة من لوحة الفوانيس اليابانية
+       ======================================================== */
+    /* 1. إجراءات الدخول - أزرق كحلي فانوسي */
+    .theme-blue {
+      --folder-bg: #f2f7fc;
+      --folder-accent: #235789;
+      --folder-border: rgba(35, 87, 137, 0.25);
+      --folder-shadow: rgba(35, 87, 137, 0.12);
+      --folder-shadow-hover: rgba(35, 87, 137, 0.22);
+    }
+    /* 2. أهم التطبيقات - برتقالي الفوانيس */
+    .theme-orange {
+      --folder-bg: #fff6f2;
+      --folder-accent: #e25822;
+      --folder-border: rgba(226, 88, 34, 0.25);
+      --folder-shadow: rgba(226, 88, 34, 0.12);
+      --folder-shadow-hover: rgba(226, 88, 34, 0.22);
+    }
+    /* 3. الإنترنت وeSIM - أخضر ياباني هادئ */
+    .theme-green {
+      --folder-bg: #f2f9f5;
+      --folder-accent: #2e7d5b;
+      --folder-border: rgba(46, 125, 91, 0.25);
+      --folder-shadow: rgba(46, 125, 91, 0.12);
+      --folder-shadow-hover: rgba(46, 125, 91, 0.22);
+    }
+    /* 4. الدفع والكاش - كريمي دافئ مائل للذهب */
+    .theme-cream {
+      --folder-bg: #fdfaf2;
+      --folder-accent: #c48b28;
+      --folder-border: rgba(196, 139, 40, 0.25);
+      --folder-shadow: rgba(196, 139, 40, 0.12);
+      --folder-shadow-hover: rgba(196, 139, 40, 0.22);
+    }
+    /* 5. المواصلات وSuica - كحلي نيلي */
+    .theme-indigo {
+      --folder-bg: #f4f6fb;
+      --folder-accent: #1e3f66;
+      --folder-border: rgba(30, 63, 102, 0.25);
+      --folder-shadow: rgba(30, 63, 102, 0.12);
+      --folder-shadow-hover: rgba(30, 63, 102, 0.22);
+    }
+    /* 6. الكهرباء والتجهيزات - مرجاني عنابي */
+    .theme-coral {
+      --folder-bg: #fff4f4;
+      --folder-accent: #cf4534;
+      --folder-border: rgba(207, 69, 52, 0.25);
+      --folder-shadow: rgba(207, 69, 52, 0.12);
+      --folder-shadow-hover: rgba(207, 69, 52, 0.22);
+    }
+    /* 7. البقالة اليابانية - زيتي مائل للزمرد */
+    .theme-teal {
+      --folder-bg: #f0f7f6;
+      --folder-accent: #1c7c72;
+      --folder-border: rgba(28, 124, 114, 0.25);
+      --folder-shadow: rgba(28, 124, 114, 0.12);
+      --folder-shadow-hover: rgba(28, 124, 114, 0.22);
+    }
+
+    /* ========================================================
+       النافذة المنبثقة واللوحة السفلية (Modal & Mobile Sheet)
+       ======================================================== */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(19, 34, 56, 0.52);
-      backdrop-filter: blur(4px);
+      background: rgba(17, 34, 59, 0.58);
+      backdrop-filter: blur(5px);
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.2s ease, visibility 0.2s ease;
-      z-index: 2000;
-      padding: 16px;
+      transition: opacity 0.22s ease, visibility 0.22s ease;
+      z-index: 3000;
+      padding: 18px;
     }
 
     .modal-overlay.active {
@@ -199,55 +414,98 @@
       visibility: visible;
     }
 
-    .modal-box {
+    /* ورقة الملف التي تخرج عند الضغط */
+    .modal-sheet {
       background: #ffffff;
+      background-image: 
+        repeating-linear-gradient(transparent, transparent 27px, #f3f6f9 28px);
       border-radius: 18px;
       width: 100%;
-      max-width: 400px;
-      padding: 24px 20px;
-      box-shadow: 0 20px 44px rgba(19, 34, 56, 0.2);
-    }
-
-    .modal-top {
+      max-width: 440px;
+      padding: 26px 22px 24px;
+      box-shadow: 0 24px 50px rgba(17, 34, 59, 0.28);
+      transform: translateY(20px) scale(0.96);
+      transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #f0e9dc;
+      flex-direction: column;
+      position: relative;
+      border: 1px solid rgba(0, 0, 0, 0.08);
     }
 
-    .modal-top h3 {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: #132238;
+    .modal-overlay.active .modal-sheet {
+      transform: translateY(0) scale(1);
+    }
+
+    /* ممسك السحب على الجوال */
+    .sheet-handle {
+      display: none;
+      width: 40px;
+      height: 4px;
+      border-radius: 3px;
+      background: #cbd5e1;
+      margin: 0 auto 14px;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e9eef4;
+    }
+
+    .modal-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-icon {
+      font-size: 1.4rem;
+    }
+
+    .modal-title {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #11223b;
     }
 
     .close-btn {
-      background: #f4ede2;
+      background: #edf2f7;
       border: none;
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       font-size: 1.1rem;
-      color: #132238;
+      color: #1e293b;
+      transition: background 0.2s, transform 0.2s;
     }
 
-    .modal-content {
-      padding: 24px 12px;
+    .close-btn:hover {
+      background: #e2e8f0;
+      transform: rotate(90deg);
+    }
+
+    .modal-body {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 36px 20px;
       text-align: center;
-      color: #64748b;
-      font-size: 1rem;
-      background: #faf6f0;
-      border-radius: 10px;
-      border: 1px dashed #e2d7c5;
+      color: #475569;
+      font-size: 1.08rem;
+      font-weight: 700;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.02);
     }
 
-    /* على الجوال: تناسق تام في الأطوال مع الحفاظ على التوزيع الداخلي */
+    /* ========================================================
+       توافق شاشات الجوال والشاشات الضيقة
+       ======================================================== */
     @media (max-width: 580px) {
       body {
         padding: 14px 8px 48px;
@@ -257,57 +515,101 @@
         gap: 20px;
       }
 
-      .needs-canvas {
-        padding: 18px 12px 14px;
+      .needs-page-frame {
+        padding: 16px 12px 16px;
       }
 
       .needs-title {
-        font-size: 1.35rem;
+        font-size: 1.4rem;
       }
 
       .needs-subtitle {
         font-size: 0.82rem;
       }
 
-      .mini-gallery {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-        margin-top: 8px;
+      .folders-grid {
+        gap: 8px 8px;
+        margin-top: 6px;
       }
 
-      .row-four, .row-three {
-        display: contents;
+      .folder-tab {
+        width: 44px;
+        height: 9px;
+        border-radius: 4px 4px 0 0;
+        margin-right: 6px;
       }
 
-      .mini-card {
-        width: 100%;
-        border-radius: 8px;
+      .folder-paper {
+        top: 3px;
+        left: 6px;
+        right: 6px;
+        height: 14px;
       }
 
-      .mini-card:nth-child(7) {
-        grid-column: 1 / span 2;
-        max-width: 140px;
-        margin: 0 auto;
+      .folder-body {
+        padding: 8px 6px;
+        border-radius: 7px;
+        gap: 6px;
       }
 
-      .mini-info {
-        padding: 4px 6px;
+      .folder-icon {
+        width: 26px;
+        height: 26px;
+        font-size: 0.95rem;
+        border-radius: 5px;
       }
 
-      .mini-name {
-        font-size: 0.68rem;
+      .folder-name {
+        font-size: 0.72rem;
       }
 
+      .folder-hint {
+        font-size: 0.58rem;
+      }
+
+      .folder-item:nth-child(7) {
+        max-width: 170px;
+      }
+
+      /* على الجوال: لوحة منبثقة من أسفل الشاشة (Bottom Sheet) */
       .modal-overlay {
         align-items: flex-end;
         padding: 0;
       }
 
-      .modal-box {
+      .sheet-handle {
+        display: block;
+      }
+
+      .modal-sheet {
         max-width: 100%;
-        border-radius: 20px 20px 0 0;
-        padding: 20px 16px 32px;
+        border-radius: 22px 22px 0 0;
+        padding: 16px 18px 34px;
+        transform: translateY(100%);
+      }
+
+      .modal-overlay.active .modal-sheet {
+        transform: translateY(0);
+      }
+    }
+
+    /* على الشاشات الضيقة جداً (< 340px) */
+    @media (max-width: 340px) {
+      .folders-grid {
+        grid-template-columns: 1fr;
+      }
+      .folder-item:nth-child(7) {
+        grid-column: 1;
+        max-width: 100%;
+      }
+    }
+
+    /* خيار تقليل الحركة (prefers-reduced-motion) */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -325,125 +627,180 @@
       <img src="route.jpg" alt="Japan Trip Route Poster" class="poster-img" />
     </article>
 
-    <!-- الصفحة 3: لوحة احتياجات الرحلة - متطابقة 100% في الطول والأبعاد -->
-    <article class="poster-frame needs-canvas">
-      <header class="needs-header">
-        <span class="tag-seal">Trip Essentials</span>
-        <h2 class="needs-title">احتياجات الرحلة</h2>
-        <p class="needs-subtitle">كل ما تحتاجه لرحلتك إلى اليابان</p>
-      </header>
+    <!-- الصفحة 3: صفحة احتياجات الرحلة الجديدة كلياً (الفوانيس والمجلدات الورقية) -->
+    <article class="needs-page-frame">
+      <div class="needs-content-layer">
+        
+        <header class="needs-header">
+          <div class="header-badge">
+            <span>✦</span>
+            <span>ملفات السفر الشخصية</span>
+          </div>
+          <h2 class="needs-title">احتياجات الرحلة</h2>
+          <p class="needs-subtitle">كل ما تحتاجه لرحلتك إلى اليابان</p>
+        </header>
 
-      <div class="mini-gallery">
-        <div class="row-four">
-          <div class="mini-card" onclick="openModal('إجراءات الدخول')">
-            <div class="mini-img-wrap">
-              <img src="cards/card_1.png" alt="إجراءات الدخول" loading="lazy">
-            </div>
-            <div class="mini-info">
-              <span class="mini-name">إجراءات الدخول</span>
-              <span class="mini-arrow">←</span>
+        <!-- شبكة المجلدات التفاعلية -->
+        <section class="folders-grid" aria-label="مجلدات احتياجات الرحلة">
+          
+          <!-- مجلد 1: إجراءات الدخول -->
+          <div class="folder-item theme-blue" role="button" tabindex="0" onclick="openFolder('إجراءات الدخول', '🛂')" onkeydown="handleKey(event, 'إجراءات الدخول', '🛂')">
+            <div class="folder-tab"></div>
+            <div class="folder-paper"></div>
+            <div class="folder-body">
+              <div class="folder-icon">🛂</div>
+              <div class="folder-info">
+                <span class="folder-name">إجراءات الدخول</span>
+                <span class="folder-hint">ملف السفر</span>
+              </div>
+              <span class="folder-arrow">←</span>
             </div>
           </div>
 
-          <div class="mini-card" onclick="openModal('أهم التطبيقات')">
-            <div class="mini-img-wrap">
-              <img src="cards/card_2.png" alt="أهم التطبيقات" loading="lazy">
-            </div>
-            <div class="mini-info">
-              <span class="mini-name">أهم التطبيقات</span>
-              <span class="mini-arrow">←</span>
-            </div>
-          </div>
-
-          <div class="mini-card" onclick="openModal('الإنترنت وeSIM')">
-            <div class="mini-img-wrap">
-              <img src="cards/card_3.png" alt="الإنترنت وeSIM" loading="lazy">
-            </div>
-            <div class="mini-info">
-              <span class="mini-name">الإنترنت وeSIM</span>
-              <span class="mini-arrow">←</span>
+          <!-- مجلد 2: أهم التطبيقات -->
+          <div class="folder-item theme-orange" role="button" tabindex="0" onclick="openFolder('أهم التطبيقات', '📱')" onkeydown="handleKey(event, 'أهم التطبيقات', '📱')">
+            <div class="folder-tab"></div>
+            <div class="folder-paper"></div>
+            <div class="folder-body">
+              <div class="folder-icon">📱</div>
+              <div class="folder-info">
+                <span class="folder-name">أهم التطبيقات</span>
+                <span class="folder-hint">ملف السفر</span>
+              </div>
+              <span class="folder-arrow">←</span>
             </div>
           </div>
 
-          <div class="mini-card" onclick="openModal('الدفع والكاش')">
-            <div class="mini-img-wrap">
-              <img src="cards/card_4.png" alt="الدفع والكاش" loading="lazy">
-            </div>
-            <div class="mini-info">
-              <span class="mini-name">الدفع والكاش</span>
-              <span class="mini-arrow">←</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="row-three">
-          <div class="mini-card" onclick="openModal('المواصلات وSuica')">
-            <div class="mini-img-wrap">
-              <img src="cards/card_5.png" alt="المواصلات وSuica" loading="lazy">
-            </div>
-            <div class="mini-info">
-              <span class="mini-name">المواصلات وSuica</span>
-              <span class="mini-arrow">←</span>
+          <!-- مجلد 3: الإنترنت وeSIM -->
+          <div class="folder-item theme-green" role="button" tabindex="0" onclick="openFolder('الإنترنت وeSIM', '📶')" onkeydown="handleKey(event, 'الإنترنت وeSIM', '📶')">
+            <div class="folder-tab"></div>
+            <div class="folder-paper"></div>
+            <div class="folder-body">
+              <div class="folder-icon">📶</div>
+              <div class="folder-info">
+                <span class="folder-name">الإنترنت وeSIM</span>
+                <span class="folder-hint">ملف السفر</span>
+              </div>
+              <span class="folder-arrow">←</span>
             </div>
           </div>
 
-          <div class="mini-card" onclick="openModal('الكهرباء والتجهيزات')">
-            <div class="mini-img-wrap">
-              <img src="cards/card_6.png" alt="الكهرباء والتجهيزات" loading="lazy">
-            </div>
-            <div class="mini-info">
-              <span class="mini-name">الكهرباء والتجهيزات</span>
-              <span class="mini-arrow">←</span>
+          <!-- مجلد 4: الدفع والكاش -->
+          <div class="folder-item theme-cream" role="button" tabindex="0" onclick="openFolder('الدفع والكاش', '💴')" onkeydown="handleKey(event, 'الدفع والكاش', '💴')">
+            <div class="folder-tab"></div>
+            <div class="folder-paper"></div>
+            <div class="folder-body">
+              <div class="folder-icon">💴</div>
+              <div class="folder-info">
+                <span class="folder-name">الدفع والكاش</span>
+                <span class="folder-hint">ملف السفر</span>
+              </div>
+              <span class="folder-arrow">←</span>
             </div>
           </div>
 
-          <div class="mini-card" onclick="openModal('البقالة اليابانية')">
-            <div class="mini-img-wrap">
-              <img src="cards/card_7.png" alt="البقالة اليابانية" loading="lazy">
-            </div>
-            <div class="mini-info">
-              <span class="mini-name">البقالة اليابانية</span>
-              <span class="mini-arrow">←</span>
+          <!-- مجلد 5: المواصلات وSuica -->
+          <div class="folder-item theme-indigo" role="button" tabindex="0" onclick="openFolder('المواصلات وSuica', '🚅')" onkeydown="handleKey(event, 'المواصلات وSuica', '🚅')">
+            <div class="folder-tab"></div>
+            <div class="folder-paper"></div>
+            <div class="folder-body">
+              <div class="folder-icon">🚅</div>
+              <div class="folder-info">
+                <span class="folder-name">المواصلات وSuica</span>
+                <span class="folder-hint">ملف السفر</span>
+              </div>
+              <span class="folder-arrow">←</span>
             </div>
           </div>
-        </div>
+
+          <!-- مجلد 6: الكهرباء والتجهيزات -->
+          <div class="folder-item theme-coral" role="button" tabindex="0" onclick="openFolder('الكهرباء والتجهيزات', '🔌')" onkeydown="handleKey(event, 'الكهرباء والتجهيزات', '🔌')">
+            <div class="folder-tab"></div>
+            <div class="folder-paper"></div>
+            <div class="folder-body">
+              <div class="folder-icon">🔌</div>
+              <div class="folder-info">
+                <span class="folder-name">الكهرباء والتجهيزات</span>
+                <span class="folder-hint">ملف السفر</span>
+              </div>
+              <span class="folder-arrow">←</span>
+            </div>
+          </div>
+
+          <!-- مجلد 7: البقالة اليابانية -->
+          <div class="folder-item theme-teal" role="button" tabindex="0" onclick="openFolder('البقالة اليابانية', '🍙')" onkeydown="handleKey(event, 'البقالة اليابانية', '🍙')">
+            <div class="folder-tab"></div>
+            <div class="folder-paper"></div>
+            <div class="folder-body">
+              <div class="folder-icon">🍙</div>
+              <div class="folder-info">
+                <span class="folder-name">البقالة اليابانية</span>
+                <span class="folder-hint">ملف السفر</span>
+              </div>
+              <span class="folder-arrow">←</span>
+            </div>
+          </div>
+
+        </section>
+
       </div>
     </article>
   </main>
 
-  <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
-    <div class="modal-box">
-      <div class="modal-top">
-        <h3 id="modalTitle">عنوان القسم</h3>
-        <button class="close-btn" onclick="closeModal()" aria-label="إغلاق">✕</button>
+  <!-- ورقة الملف المنبثقة (Modal / Bottom Sheet) -->
+  <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)" role="dialog" aria-modal="true">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon" id="modalIcon">📁</span>
+          <h3 class="modal-title" id="modalTitle">عنوان القسم</h3>
+        </div>
+        <button class="close-btn" onclick="closeFolder()" aria-label="إغلاق">✕</button>
       </div>
-      <div class="modal-content">
+      <div class="modal-body">
         ستُضاف معلومات هذا القسم هنا
       </div>
     </div>
   </div>
 
   <script>
-    function openModal(title) {
+    let savedScrollY = 0;
+
+    function openFolder(title, icon) {
+      savedScrollY = window.scrollY;
       document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalIcon').textContent = icon;
       document.getElementById('modalOverlay').classList.add('active');
-      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = '-' + savedScrollY + 'px';
+      document.body.style.width = '100%';
     }
 
-    function closeModal() {
+    function closeFolder() {
       document.getElementById('modalOverlay').classList.remove('active');
-      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, savedScrollY);
     }
 
     function handleOverlayClick(e) {
       if (e.target.id === 'modalOverlay') {
-        closeModal();
+        closeFolder();
+      }
+    }
+
+    function handleKey(e, title, icon) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openFolder(title, icon);
       }
     }
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
-        closeModal();
+        closeFolder();
       }
     });
   </script>
