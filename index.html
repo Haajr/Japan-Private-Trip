@@ -6,7 +6,7 @@
   <title>Japan Honeymoon — رحلة اليابان الخاصة</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -21,7 +21,7 @@
         radial-gradient(circle at 100% 100%, rgba(201, 67, 45, 0.04) 0%, transparent 40%),
         radial-gradient(circle at 0% 0%, rgba(19, 34, 56, 0.04) 0%, transparent 40%),
         url("data:image/svg+xml,%3Csvg width='36' height='36' viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 0L36 18L18 36L0 18z' fill='%23132238' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
-      font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       color: #132238;
       min-height: 100vh;
       display: flex;
@@ -616,7 +616,363 @@
     .modal-sheet { max-height: 90vh; max-height: 90dvh; }
     .modal-header, .sheet-handle { flex-shrink: 0; }
     .modal-body { min-height: 0; overflow-y: auto; overflow-wrap: anywhere; }
-</style>
+
+    /* Typography improvements */
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* تحسين شبكة المجلدات الثمانية وتنسيق النصوص */
+    .folders-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 12px;
+      width: 100%;
+      margin-top: 6px;
+    }
+
+    .folder-item {
+      min-height: 54px;
+    }
+
+    .folder-body {
+      padding: 9px 8px 9px 6px !important;
+      gap: 7px !important;
+      min-height: 52px;
+      box-sizing: border-box;
+    }
+
+    .folder-name {
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      line-height: 1.25 !important;
+      white-space: normal !important;
+      word-break: normal !important;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* شاشة العرض الكاملة للجوال واللوحة */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 34, 59, 0.65);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.22s ease, visibility 0.22s ease;
+      z-index: 3000;
+      padding: 0;
+    }
+
+    .modal-sheet {
+      background: #ffffff;
+      width: 100vw;
+      height: 100vh;
+      max-width: 620px;
+      max-height: 92vh;
+      margin: auto;
+      border-radius: 20px;
+      padding: 0;
+      box-shadow: 0 24px 60px rgba(17, 34, 59, 0.3);
+      transform: translateY(24px) scale(0.98);
+      transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    @media (max-width: 640px) {
+      .modal-sheet {
+        width: 100vw;
+        height: 100vh;
+        max-width: 100vw;
+        max-height: 100vh;
+        border-radius: 0;
+        margin: 0;
+      }
+    }
+
+    .modal-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #ffffff;
+      padding: 14px 18px;
+      border-bottom: 1.5px solid #eef2f6;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .modal-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .modal-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .modal-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0f172a;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .close-btn {
+      background: #f1f5f9;
+      color: #1e293b;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .close-btn:hover {
+      background: #e2e8f0;
+      transform: scale(1.05);
+    }
+
+    .modal-body {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 20px 18px 40px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: #1e293b;
+      overscroll-behavior: contain;
+    }
+
+    .modal-body p {
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .modal-body ul, .modal-body ol {
+      margin: 10px 0 16px 20px;
+      padding-right: 14px;
+    }
+
+    .modal-body li {
+      margin-bottom: 10px;
+      line-height: 1.75;
+    }
+
+    /* إطارات الصور الموحدة والمعتدلة */
+    .modal-body figure {
+      margin: 14px 0 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 8px;
+      cursor: zoom-in;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+
+    .modal-body figure::after {
+      content: "🔍 تكبير";
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(15, 23, 42, 0.72);
+      color: #ffffff;
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    .modal-body figure:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+
+    .modal-body figure img {
+      max-height: 220px !important;
+      height: 210px !important;
+      width: auto !important;
+      max-width: 100% !important;
+      object-fit: contain !important;
+      display: block !important;
+      margin: 0 auto !important;
+      border-radius: 8px;
+    }
+
+    /* تصميم خاص واستثنائي لقسم Convenience Store Trending */
+    .convenience-theme .modal-sheet {
+      background-color: #fffbfc;
+      background-image: 
+        linear-gradient(to right, rgba(165, 222, 248, 0.38) 1.5px, transparent 1.5px),
+        linear-gradient(to bottom, rgba(165, 222, 248, 0.38) 1.5px, transparent 1.5px);
+      background-size: 26px 26px;
+    }
+
+    .convenience-theme .modal-header {
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 2px solid #fed7e2;
+    }
+
+    .convenience-theme .modal-title {
+      color: #e11d48;
+      font-family: 'Plus Jakarta Sans', 'IBM Plex Sans Arabic', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+
+    .convenience-theme .close-btn {
+      background: #ffe4e6;
+      color: #be123c;
+    }
+
+    .convenience-theme .close-btn:hover {
+      background: #fecdd3;
+    }
+
+    .convenience-cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .convenience-card {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1.5px solid #fecdd3;
+      padding: 16px 16px 14px;
+      box-shadow: 0 6px 16px rgba(225, 29, 72, 0.06);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .convenience-card:active {
+      transform: scale(0.985);
+    }
+
+    .convenience-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ff708a, #7dd3fc, #ff708a);
+    }
+
+    .convenience-card .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #be123c;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .convenience-card .card-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #4b5563;
+      margin-bottom: 10px;
+    }
+
+    .convenience-card figure {
+      margin: 8px 0 0 !important;
+      background: #fff5f7 !important;
+      border: 1px solid #ffe4e6 !important;
+      border-radius: 12px;
+      padding: 6px !important;
+      height: 210px;
+      max-height: 220px;
+    }
+
+    .convenience-card figure img {
+      max-height: 195px !important;
+      height: 195px !important;
+      object-fit: contain !important;
+    }
+
+    /* Lightbox Zoom Overlay */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 15, 25, 0.92);
+      z-index: 5000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-img {
+      max-width: 95vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+      transition: transform 0.2s ease;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+
+  </style>
 </head>
 <body>
 
@@ -689,14 +1045,14 @@
             </div>
           </div>
 
-          <!-- مجلد 4: منتجات الكونفينس ستور التي تستحق التجربة -->
-          <div class="folder-item theme-teal" role="button" tabindex="0" onclick="openFolder('منتجات الكونفينس ستور التي تستحق التجربة', '🍙')" onkeydown="handleKey(event, 'منتجات الكونفينس ستور التي تستحق التجربة', '🍙')">
+          <!-- مجلد 4: Convenience Store Trending -->
+          <div class="folder-item theme-teal" role="button" tabindex="0" onclick="openFolder('Convenience Store Trending', '🍓')" onkeydown="handleKey(event, 'Convenience Store Trending', '🍓')">
             <div class="folder-tab"></div>
             <div class="folder-paper"></div>
             <div class="folder-body">
-              <div class="folder-icon">🍙</div>
+              <div class="folder-icon">🍓</div>
               <div class="folder-info">
-                <span class="folder-name">منتجات الكونفينس ستور التي تستحق التجربة</span>
+                <span class="folder-name" dir="ltr">Convenience Store Trending</span>
                 <span class="folder-hint">ملف 04</span>
               </div>
               <span class="folder-arrow">←</span>
@@ -785,7 +1141,7 @@
   "تجهيز البيانات قبل السفر": "<p dir=\"auto\">يفضّل إكمالها قبل السفر بأسبوع:</p><p dir=\"auto\">تأكدوا من صلاحية الجواز ومتطلبات التأشيرة.</p><p dir=\"auto\">جهزوا بيانات الرحلة والفندق التي سنزوّدكم بها.</p><p dir=\"auto\">أكملوا إجراءات الدخول والجمارك عبر <a href=\"https://services.digital.go.jp/en/visit-japan-web/\" target=\"_blank\" rel=\"noopener noreferrer\">Visit Japan Web</a> الرسمي، وجهزوا رمز QR لكل مسافر.</p><p dir=\"auto\">جهزوا محوّل فيش Type A. كهرباء اليابان 100V؛ لذلك بعض أجهزة الشعر ( الاستشوار ) قد تعمل بقوة أقل من المعتاد إذا لم تكن مصممة لجهد 100V.</p><p dir=\"auto\">جهزوا الإنترنت والتطبيقات اللازمة على الهاتف قبل السفر.</p><figure><img src=\"assets/travel-needs/image32.webp\" alt=\"جهزوا الإنترنت والتطبيقات اللازمة على الهاتف قبل السفر.\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><figure><img src=\"assets/travel-needs/image25.webp\" alt=\"جهزوا الإنترنت والتطبيقات اللازمة على الهاتف قبل السفر.\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure>",
   "الإنترنت": "<p dir=\"auto\">قبل السفر، حمّلوا أحد التطبيقين:</p><p dir=\"auto\"><a href=\"https://www.airalo.com/japan-esim\" target=\"_blank\" rel=\"noopener noreferrer\">Airalo</a></p><p dir=\"auto\"><a href=\"https://esim.holafly.com/esim-japan/\" target=\"_blank\" rel=\"noopener noreferrer\">Holafly</a></p><p dir=\"auto\">اختاروا Japan eSIM والباقـة المناسبة لمدة الرحلة، وثبّتوا الـeSIM على الجوال قبل السفر.</p>",
   "التطبيقات الضرورية لليابان": "<p dir=\"auto\"><a href=\"https://didimobility.co.jp/\" target=\"_blank\" rel=\"noopener noreferrer\">Didi</a> للمواصلات</p><p dir=\"auto\"><a href=\"https://www.klook.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Klook</a> </p><p dir=\"auto\"><a href=\"https://www.tokyodisneyresort.jp/en/tdr/app.html\" target=\"_blank\" rel=\"noopener noreferrer\">Tokyo Disney Resort App</a></p><p dir=\"auto\"><a href=\"https://www.usj.co.jp/web/en/us/enjoy/app\" target=\"_blank\" rel=\"noopener noreferrer\">Universal Studios Japan App</a></p><p dir=\"auto\"><a href=\"https://halalgourmet.jp/\" target=\"_blank\" rel=\"noopener noreferrer\">Halal gourmet japan</a> سكان لمنتجات البقاله للتأكد أنها حلال والمطاعم الحلال</p>",
-  "منتجات الكونفينس ستور التي تستحق التجربة": "<p dir=\"auto\">ساندويتش البيض </p><figure><img src=\"assets/travel-needs/image30.webp\" alt=\"ساندويتش البيض\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Onigiri بالتونه او السالمون</p><figure><img src=\"assets/travel-needs/image19.webp\" alt=\"Onigiri بالتونه او السالمون\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Melon Pan </p><figure><img src=\"assets/travel-needs/image18.webp\" alt=\"Melon Pan\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">7-Eleven Smoothie</p><p dir=\"auto\">كوب فواكه مجمدة يوضع في ماكينة الـSmoothie داخل الفرع لتحضيره مباشرة.</p><figure><img src=\"assets/travel-needs/image28.webp\" alt=\"كوب فواكه مجمدة يوضع في ماكينة الـSmoothie داخل الفرع لتحضيره مباشرة.\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Double Cream Puff</p><figure><img src=\"assets/travel-needs/image12.webp\" alt=\"Double Cream Puff\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">OHAYO BRULEE Ice Cream</p><figure><img src=\"assets/travel-needs/image26.webp\" alt=\"OHAYO BRULEE Ice Cream\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Big Pucchin Pudding </p><figure><img src=\"assets/travel-needs/image8.webp\" alt=\"Big Pucchin Pudding\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Egg &amp; Fermented Butter French Toast </p><figure><img src=\"assets/travel-needs/image27.webp\" alt=\"Egg &amp; Fermented Butter French Toast\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Meiji Essel Super Cup</p><figure><img src=\"assets/travel-needs/image7.webp\" alt=\"Meiji Essel Super Cup\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Choco Monaka Jumbo </p><figure><img src=\"assets/travel-needs/image6.webp\" alt=\"Choco Monaka Jumbo\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Hokkaido Melon Cream Bread </p><figure><img src=\"assets/travel-needs/image10.webp\" alt=\"Hokkaido Melon Cream Bread\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Tropicana Essentials Peach Blend</p><figure><img src=\"assets/travel-needs/image24.webp\" alt=\"Tropicana Essentials Peach Blend\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Jagabee </p><figure><img src=\"assets/travel-needs/image31.webp\" alt=\"Jagabee\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Chilled Moist Baumkuchen </p><figure><img src=\"assets/travel-needs/image14.webp\" alt=\"Chilled Moist Baumkuchen\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Yukimi Daifuku</p><figure><img src=\"assets/travel-needs/image23.webp\" alt=\"Yukimi Daifuku\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Pancakes with Maple Syrup &amp; Margarine </p><figure><img src=\"assets/travel-needs/image29.webp\" alt=\"Pancakes with Maple Syrup &amp; Margarine\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Jagarico Salad </p><figure><img src=\"assets/travel-needs/image11.webp\" alt=\"Jagarico Salad\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure>",
+  "Convenience Store Trending": "<p dir=\"auto\">ساندويتش البيض </p><figure><img src=\"assets/travel-needs/image30.webp\" alt=\"ساندويتش البيض\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Onigiri بالتونه او السالمون</p><figure><img src=\"assets/travel-needs/image19.webp\" alt=\"Onigiri بالتونه او السالمون\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Melon Pan </p><figure><img src=\"assets/travel-needs/image18.webp\" alt=\"Melon Pan\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">7-Eleven Smoothie</p><p dir=\"auto\">كوب فواكه مجمدة يوضع في ماكينة الـSmoothie داخل الفرع لتحضيره مباشرة.</p><figure><img src=\"assets/travel-needs/image28.webp\" alt=\"كوب فواكه مجمدة يوضع في ماكينة الـSmoothie داخل الفرع لتحضيره مباشرة.\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Double Cream Puff</p><figure><img src=\"assets/travel-needs/image12.webp\" alt=\"Double Cream Puff\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">OHAYO BRULEE Ice Cream</p><figure><img src=\"assets/travel-needs/image26.webp\" alt=\"OHAYO BRULEE Ice Cream\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Big Pucchin Pudding </p><figure><img src=\"assets/travel-needs/image8.webp\" alt=\"Big Pucchin Pudding\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Egg &amp; Fermented Butter French Toast </p><figure><img src=\"assets/travel-needs/image27.webp\" alt=\"Egg &amp; Fermented Butter French Toast\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Meiji Essel Super Cup</p><figure><img src=\"assets/travel-needs/image7.webp\" alt=\"Meiji Essel Super Cup\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Choco Monaka Jumbo </p><figure><img src=\"assets/travel-needs/image6.webp\" alt=\"Choco Monaka Jumbo\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Hokkaido Melon Cream Bread </p><figure><img src=\"assets/travel-needs/image10.webp\" alt=\"Hokkaido Melon Cream Bread\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Tropicana Essentials Peach Blend</p><figure><img src=\"assets/travel-needs/image24.webp\" alt=\"Tropicana Essentials Peach Blend\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Jagabee </p><figure><img src=\"assets/travel-needs/image31.webp\" alt=\"Jagabee\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Chilled Moist Baumkuchen </p><figure><img src=\"assets/travel-needs/image14.webp\" alt=\"Chilled Moist Baumkuchen\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Yukimi Daifuku</p><figure><img src=\"assets/travel-needs/image23.webp\" alt=\"Yukimi Daifuku\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Pancakes with Maple Syrup &amp; Margarine </p><figure><img src=\"assets/travel-needs/image29.webp\" alt=\"Pancakes with Maple Syrup &amp; Margarine\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">Jagarico Salad </p><figure><img src=\"assets/travel-needs/image11.webp\" alt=\"Jagarico Salad\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure>",
   "الوصول إلى اليابان": "<p dir=\"auto\">📍 مطار ناريتا الدولي (NRT) — المبنى 2<br>📅 29 نوفمبر 2026<br>🕛 11:55 صباحًا بتوقيت اليابان </p><p dir=\"auto\">بعد النزول من الطائرة:</p><p dir=\"auto\">② الوصول إلى الجوازات</p><p dir=\"auto\">بعد النزول من الطائرة:</p><p dir=\"auto\">اتبعوا اللوحات الصفراء Arrivals.</p><figure><img src=\"assets/travel-needs/image9.webp\" alt=\"اتبعوا اللوحات الصفراء Arrivals.\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">لا تتجهوا إلى International Transfer.</p><p dir=\"auto\">ثم لحد الوصول للوحة Immigration </p><figure><img src=\"assets/travel-needs/image1.webp\" alt=\"ثم لحد الوصول للوحة Immigration\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">عند الجوازات، جهّزوا جواز السفر ورمز Visit Japan Web لكل شخص.</p><p dir=\"auto\">اتبعوا تعليمات الموظف لأخذ البصمات والصورة.</p><p dir=\"auto\">بعد الجوازات، انزلوا إلى الدور 1 واتبعوا لوحات Baggage Claim. راجعوا الشاشة باسم شركة الطيران ورقم الرحلة لمعرفة رقم السير الصحيح، ثم استلموا الشنط</p>",
   "الدفع والكاش في اليابان": "<p dir=\"auto\">بعد الانتهاء من الجوازات واستلام الشنط والجمارك تدخلون علی Lobby Arrival </p><p dir=\"auto\">بحثوا عن علامة ATM / Cash Service واسحبو مبلغ للحالات الطارئه بحال احتجتو كاش</p><figure><img src=\"assets/travel-needs/image13.webp\" alt=\"بحثوا عن علامة ATM / Cash Service واسحبو مبلغ للحالات الطارئه بحال احتجتو كاش\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><figure><img src=\"assets/travel-needs/image15.webp\" alt=\"بحثوا عن علامة ATM / Cash Service واسحبو مبلغ للحالات الطارئه بحال احتجتو كاش\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure>",
   "العثور على نقطة مقابلة السائق": "<p dir=\"auto\">سيتواصل معكم السائق قبل موعد الاستقبال. عند الوصول، اذا ماكان عندكم نت اتصلوا بشبكة Wi-Fi المجانية في المطار وتحققوا من رسائل WhatsApp، يكونوا متاحين لاستقبال اتصال من السائق.</p><p dir=\"auto\">اتبعوا المسار الموضح في الصورة، وبعد الخروج من المطار اعبروا ممرَي المشاة ثم انتظروا عند Central Entrance.</p><p dir=\"auto\">📌 ملاحظة: الصورة توضيحية لتسهيل معرفة المسار، وقد يختلف شكل الموقع واللوحات عند الوصول. اتبعوا تعليمات السائق واللوحات الموجودة في المطار.</p><figure><img src=\"assets/travel-needs/image33.webp\" alt=\"📌 ملاحظة: الصورة توضيحية لتسهيل معرفة المسار، وقد يختلف شكل الموقع واللوحات عند الوصول. اتبعوا تعليمات السائق واللوحات الموجودة في المطار.\" loading=\"lazy\" style=\"max-width:100%;height:auto;display:block;margin:12px auto\"></figure><p dir=\"auto\">رقم الطوارئ للسائق: 001 332 239 2666</p>",
@@ -795,14 +1151,73 @@
     let lastTrigger = null;
     const overlay = document.getElementById('modalOverlay');
 
+    // معالجة عرض بطاقات Convenience Store Trending
+    function formatConvenienceStore(rawHtml) {
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = rawHtml;
+      const nodes = Array.from(tempDiv.children);
+      let cardsHtml = '<div class="convenience-cards-container">';
+      let currentTitle = '';
+      let currentDesc = '';
+      
+      for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
+        if (node.tagName === 'P') {
+          if (!currentTitle) {
+            currentTitle = node.innerHTML.trim();
+          } else {
+            currentDesc = node.innerHTML.trim();
+          }
+        } else if (node.tagName === 'FIGURE') {
+          const figureHtml = node.outerHTML;
+          cardsHtml += '<div class="convenience-card">' +
+            '<div class="card-title" dir="auto">✨ ' + currentTitle + '</div>' +
+            (currentDesc ? '<div class="card-desc" dir="auto">' + currentDesc + '</div>' : '') +
+            figureHtml +
+            '</div>';
+          currentTitle = '';
+          currentDesc = '';
+        }
+      }
+      if (currentTitle) {
+        cardsHtml += '<div class="convenience-card"><div class="card-title" dir="auto">' + currentTitle + '</div>' + (currentDesc ? '<div class="card-desc" dir="auto">' + currentDesc + '</div>' : '') + '</div>';
+      }
+      cardsHtml += '</div>';
+      return cardsHtml;
+    }
+
     function openFolder(title, icon) {
       if (!travelSections[title]) return;
       savedScrollY = window.scrollY;
       lastTrigger = document.activeElement;
       document.getElementById('modalTitle').textContent = title;
       document.getElementById('modalIcon').textContent = icon;
+      
+      const isConvenience = (title === 'Convenience Store Trending');
+      if (isConvenience) {
+        document.body.classList.add('convenience-theme');
+      } else {
+        document.body.classList.remove('convenience-theme');
+      }
+
       const body = document.getElementById('modalBody');
-      body.innerHTML = travelSections[title];
+      const rawContent = travelSections[title];
+      body.innerHTML = isConvenience ? formatConvenienceStore(rawContent) : rawContent;
+      
+      // Bind click on figures to open Lightbox
+      body.querySelectorAll('figure img').forEach(img => {
+        img.addEventListener('click', function(e) {
+          e.stopPropagation();
+          openLightbox(this.src, this.alt);
+        });
+      });
+      body.querySelectorAll('figure').forEach(fig => {
+        fig.addEventListener('click', function() {
+          const img = this.querySelector('img');
+          if (img) openLightbox(img.src, img.alt);
+        });
+      });
+
       body.scrollTop = 0;
       overlay.classList.add('active');
       overlay.setAttribute('aria-hidden', 'false');
@@ -813,8 +1228,23 @@
       overlay.querySelector('.close-btn').focus({preventScroll: true});
     }
 
+    function openLightbox(src, alt) {
+      const lb = document.getElementById('imageLightbox');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      img.alt = alt || 'معاينة مكبرة';
+      lb.classList.add('active');
+    }
+
+    function closeLightbox() {
+      const lb = document.getElementById('imageLightbox');
+      lb.classList.remove('active');
+    }
+
     function closeFolder() {
       if (!overlay.classList.contains('active')) return;
+      closeLightbox();
+      document.body.classList.remove('convenience-theme');
       overlay.classList.remove('active');
       overlay.setAttribute('aria-hidden', 'true');
       document.querySelector('main').inert = false;
@@ -848,6 +1278,13 @@
     });
 
   </script>
+
+  <!-- Lightbox Zoom Overlay -->
+  <div class="lightbox-overlay" id="imageLightbox" onclick="closeLightbox()" aria-label="تكبير الصورة" role="dialog">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="إغلاق">✕</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="معاينة مكبرة">
+  </div>
+
 </body>
 </html>
 
