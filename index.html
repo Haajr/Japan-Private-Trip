@@ -73,7 +73,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 26px 18px 24px;
+      padding: 18px 14px 16px;
       
       /* صورة الفوانيس تغطي الخلفية */
       background-image: url('lanterns_bg.jpg');
@@ -99,7 +99,7 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
     }
 
     .needs-header {
@@ -149,13 +149,7 @@
       margin-top: 10px;
     }
 
-    /* المجلد السابع يتوسط بمفرده */
-    .folder-item:nth-child(7) {
-      grid-column: 1 / span 2;
-      max-width: 210px;
-      margin: 0 auto;
-      width: 100%;
-    }
+    
 
     /* مجلد ورقي تفاعلي كامل */
     .folder-item {
@@ -176,6 +170,7 @@
     .folder-item:nth-child(5) { animation-delay: 0.25s; }
     .folder-item:nth-child(6) { animation-delay: 0.30s; }
     .folder-item:nth-child(7) { animation-delay: 0.35s; }
+    .folder-item:nth-child(8) { animation-delay: 0.40s; }
 
     @keyframes folderEnter {
       from {
@@ -516,7 +511,7 @@
       }
 
       .needs-page-frame {
-        padding: 16px 12px 16px;
+        padding: 18px 14px 16px;
       }
 
       .needs-title {
@@ -567,9 +562,7 @@
         font-size: 0.58rem;
       }
 
-      .folder-item:nth-child(7) {
-        max-width: 170px;
-      }
+      
 
       /* على الجوال: لوحة منبثقة من أسفل الشاشة (Bottom Sheet) */
       .modal-overlay {
@@ -594,15 +587,7 @@
     }
 
     /* على الشاشات الضيقة جداً (< 340px) */
-    @media (max-width: 340px) {
-      .folders-grid {
-        grid-template-columns: 1fr;
-      }
-      .folder-item:nth-child(7) {
-        grid-column: 1;
-        max-width: 100%;
-      }
-    }
+    
 
     /* خيار تقليل الحركة (prefers-reduced-motion) */
     @media (prefers-reduced-motion: reduce) {
@@ -970,6 +955,109 @@
       align-items: center;
       justify-content: center;
       backdrop-filter: blur(4px);
+    }
+
+  
+    /* ========================================================
+       تحسين توزيع شبكة المجلدات الثمانية (2 أعمدة × 4 صفوف متساوية)
+       ======================================================== */
+    .needs-content-layer {
+      justify-content: center !important;
+      gap: 12px !important;
+      padding: 6px 0 !important;
+    }
+
+    .needs-header {
+      margin-bottom: 2px !important;
+    }
+
+    .needs-title {
+      font-size: 1.6rem !important;
+      margin-bottom: 2px !important;
+    }
+
+    .needs-subtitle {
+      font-size: 0.85rem !important;
+    }
+
+    .folders-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      grid-template-rows: repeat(4, auto) !important;
+      gap: 10px 10px !important;
+      width: 100% !important;
+      margin-top: 0 !important;
+    }
+
+    .folder-item {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      grid-column: auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    .folder-body {
+      padding: 9px 8px 9px 6px !important;
+      gap: 7px !important;
+      min-height: 52px !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+      align-items: center !important;
+    }
+
+    .folder-info {
+      flex: 1 !important;
+      min-width: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+    }
+
+    .folder-name {
+      font-size: 0.74rem !important;
+      font-weight: 700 !important;
+      line-height: 1.25 !important;
+      white-space: normal !important;
+      word-break: normal !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      display: block !important;
+    }
+
+    .folder-hint {
+      font-size: 0.62rem !important;
+      margin-top: 2px !important;
+    }
+
+    @media (max-width: 480px) {
+      .needs-content-layer {
+        gap: 8px !important;
+      }
+      .needs-title {
+        font-size: 1.35rem !important;
+      }
+      .needs-subtitle {
+        font-size: 0.78rem !important;
+      }
+      .folders-grid {
+        gap: 8px 8px !important;
+      }
+      .folder-body {
+        padding: 7px 6px !important;
+        gap: 6px !important;
+        min-height: 48px !important;
+      }
+      .folder-name {
+        font-size: 0.70rem !important;
+        line-height: 1.2 !important;
+      }
+      .folder-icon {
+        width: 26px !important;
+        height: 26px !important;
+        font-size: 0.95rem !important;
+      }
     }
 
   </style>
