@@ -144,16 +144,17 @@
     .folders-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 10px 12px;
+      gap: 12px 14px;
       width: 100%;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
-    @media (max-width: 360px) {
-      .folders-grid {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
+    /* المجلد السابع يتوسط بمفرده */
+    .folder-item:nth-child(7) {
+      grid-column: 1 / span 2;
+      max-width: 210px;
+      margin: 0 auto;
+      width: 100%;
     }
 
     /* مجلد ورقي تفاعلي كامل */
@@ -167,15 +168,14 @@
       animation: folderEnter 0.45s ease-out backwards;
     }
 
-    /* تأخير الدخول المتتابع للمجلدات الثمانية */
-    .folder-item:nth-child(1) { animation-delay: 0.04s; }
-    .folder-item:nth-child(2) { animation-delay: 0.08s; }
-    .folder-item:nth-child(3) { animation-delay: 0.12s; }
-    .folder-item:nth-child(4) { animation-delay: 0.16s; }
-    .folder-item:nth-child(5) { animation-delay: 0.20s; }
-    .folder-item:nth-child(6) { animation-delay: 0.24s; }
-    .folder-item:nth-child(7) { animation-delay: 0.28s; }
-    .folder-item:nth-child(8) { animation-delay: 0.32s; }
+    /* تأخير الدخول المتتابع */
+    .folder-item:nth-child(1) { animation-delay: 0.05s; }
+    .folder-item:nth-child(2) { animation-delay: 0.10s; }
+    .folder-item:nth-child(3) { animation-delay: 0.15s; }
+    .folder-item:nth-child(4) { animation-delay: 0.20s; }
+    .folder-item:nth-child(5) { animation-delay: 0.25s; }
+    .folder-item:nth-child(6) { animation-delay: 0.30s; }
+    .folder-item:nth-child(7) { animation-delay: 0.35s; }
 
     @keyframes folderEnter {
       from {
@@ -236,11 +236,11 @@
       background: var(--folder-bg);
       border: 1px solid var(--folder-border);
       border-radius: 8px;
-      padding: 8px 8px 8px 6px;
+      padding: 10px 10px 10px 8px;
       display: flex;
       align-items: center;
-      gap: 7px;
-      box-shadow: 0 4px 12px var(--folder-shadow);
+      gap: 8px;
+      box-shadow: 0 6px 14px var(--folder-shadow);
       transition: all 0.28s cubic-bezier(0.2, 0, 0.2, 1);
       overflow: hidden;
     }
@@ -280,13 +280,12 @@
     }
 
     .folder-name {
-      font-size: 0.76rem;
+      font-size: 0.84rem;
       font-weight: 800;
       color: #11223b;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      line-height: 1.25;
     }
 
     .folder-hint {
@@ -390,13 +389,6 @@
       --folder-border: rgba(28, 124, 114, 0.25);
       --folder-shadow: rgba(28, 124, 114, 0.12);
       --folder-shadow-hover: rgba(28, 124, 114, 0.22);
-    }
-    .theme-purple {
-      --folder-bg: #f8f4fc;
-      --folder-accent: #7b3fa0;
-      --folder-border: rgba(123, 63, 160, 0.25);
-      --folder-shadow: rgba(123, 63, 160, 0.12);
-      --folder-shadow-hover: rgba(123, 63, 160, 0.22);
     }
 
     /* ========================================================
@@ -621,33 +613,10 @@
       }
     }
   
-    /* Readable reference content with a fixed header and scrollable body. */
-    .modal-sheet, .modal-card { max-width: 640px; max-height: 88vh; max-height: 88dvh; overflow: hidden; }
+    .modal-sheet { max-height: 90vh; max-height: 90dvh; }
     .modal-header, .sheet-handle { flex-shrink: 0; }
-    .modal-body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; text-align: right; padding: 18px; line-height: 1.85; font-size: 1rem; font-weight: 500; border: 1px solid #e4e9ef; background: #fffdf8; -webkit-overflow-scrolling: touch; }
-    .info-section + .info-section { margin-top: 22px; }
-    .modal-body h4 { color: #152542; font-size: 1.08rem; margin-bottom: 8px; font-weight: 800; }
-    .modal-body ul, .modal-body ol { padding-inline-start: 24px; }
-    .modal-body li + li { margin-top: 8px; }
-    .info-note { background: #fff0d8; border-inline-start: 3px solid #c48b28; border-radius: 8px; padding: 12px; margin: 18px 0; color: #59441b; }
-    .info-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .info-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 12px; border: 1px solid #cbd9e6; border-radius: 10px; background: #edf4fa; color: #173e65; font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
-    .info-links a:hover { background: #dbeaf6; }
-    .product-row { border-bottom: 1px solid #e5e9ef; padding: 16px 0; }
-    .product-shop { display: inline-block; color: #2e7d5b; font-size: .85rem; font-weight: 700; }
-    .product-name { font-size: .88rem; color: #66758a; overflow-wrap: anywhere; margin-bottom: 4px; }
-    .info-footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid #e5e9ef; color: #64748b; font-size: .8rem; }
-    .close-btn { flex-shrink: 0; width: 44px; height: 44px; }
-    :focus-visible { outline: 3px solid #235789; outline-offset: 3px; }
-    .folder-name { white-space: normal; }
-    @media (max-width: 580px) {
-      .modal-sheet, .modal-card { max-height: 90vh; max-height: 90dvh; padding-bottom: max(18px, env(safe-area-inset-bottom)); }
-      .modal-body { padding: 14px; }
-      .modal-title { font-size: 1.15rem; }
-    }
-    @media (max-width: 340px) { .needs-page-frame { aspect-ratio: auto; min-height: 600px; } }
-
-  </style>
+    .modal-body { min-height: 0; overflow-y: auto; overflow-wrap: anywhere; }
+</style>
 </head>
 <body>
 
