@@ -338,6 +338,18 @@
         transform: translateY(0);
       }
     }
+
+    .modal-card { max-height: 88vh; }
+    .modal-body.filled { text-align: right; color: var(--text-navy); font-size: 1rem; line-height: 1.8;
+      background: #faf6f0; border: 1px solid #efe6d6; padding: 16px 18px; overflow-y: auto; }
+    .modal-body.filled h4 { font-size: 1.02rem; font-weight: 800; margin: 14px 0 6px; }
+    .modal-body.filled h4:first-child { margin-top: 0; }
+    .modal-body.filled ul, .modal-body.filled ol { padding-right: 20px; margin: 0 0 6px; }
+    .modal-body.filled li { margin-bottom: 4px; }
+    .modal-body.filled .note { background: #fff; border-radius: 10px; padding: 10px 12px; margin-top: 10px;
+      border-right: 4px solid #b5322b; font-size: 0.95rem; }
+    .modal-body.filled bdi { font-weight: 700; }
+    .modal-body.filled a { color: #b5322b; font-weight: 700; }
   </style>
 </head>
 <body>
@@ -378,7 +390,7 @@
           <img src="cards/card_3.png" alt="الإنترنت وeSIM" loading="lazy">
         </div>
         <div class="card-info">
-          <span class="card-title">الإنترنت وeSIM</span>
+          <span class="card-title">الإنترنت و&#8239;<bdi>eSIM</bdi></span>
           <span class="card-arrow">←</span>
         </div>
       </article>
@@ -403,7 +415,7 @@
           <img src="cards/card_5.png" alt="المواصلات وSuica" loading="lazy">
         </div>
         <div class="card-info">
-          <span class="card-title">المواصلات وSuica</span>
+          <span class="card-title">المواصلات و&#8239;<bdi>Suica</bdi></span>
           <span class="card-arrow">←</span>
         </div>
       </article>
@@ -453,8 +465,13 @@
   </div>
 
   <script>
+    const SECTIONS = {"إجراءات الدخول": "<h4>قبل السفر بأسبوع</h4><ul>\n<li>تأكدوا إن الجواز صالح ومن متطلبات التأشيرة.</li>\n<li>جهزوا بيانات الرحلة والفندق اللي بنعطيكم إياها.</li>\n<li>كمّلوا إجراءات الدخول والجمارك في موقع <bdi>Visit Japan Web</bdi> الرسمي، وجهزوا رمز <bdi>QR</bdi> لكل مسافر.</li></ul>\n<h4>بعد النزول في مطار ناريتا (المبنى 2)</h4><ol>\n<li>اتبعوا اللوحات الصفراء <bdi>Arrivals</bdi>، ولا تروحون لـ <bdi>International Transfer</bdi>.</li>\n<li>كمّلوا لين توصلون لوحة <bdi>Immigration</bdi>.</li>\n<li>جهزوا الجواز ورمز <bdi>Visit Japan Web</bdi> لكل شخص، واتبعوا الموظف للبصمة والصورة.</li>\n<li>بعد الجوازات انزلوا الدور 1 واتبعوا <bdi>Baggage Claim</bdi>، وشوفوا رقم السير على الشاشة باسم شركة الطيران ورقم الرحلة.</li></ol>", "أهم التطبيقات": "<ul>\n<li><bdi>Didi</bdi> — للمواصلات وطلب السيارات.</li>\n<li><bdi>Klook</bdi> — للتذاكر والحجوزات.</li>\n<li><bdi>Tokyo Disney Resort App</bdi> — لديزني.</li>\n<li><bdi>Universal Studios Japan App</bdi> — ليونيفرسال.</li>\n<li><bdi>Halal Gourmet Japan</bdi> — تسوون سكان لمنتجات البقالة تتأكدون إنها حلال، وتلقون المطاعم الحلال.</li></ul>\n<div class=\"note\">حمّلوا التطبيقات وسجّلوا فيها قبل السفر.</div>", "الإنترنت وeSIM": "<h4>قبل السفر</h4><ol>\n<li>حمّلوا واحد من التطبيقين: <bdi>Airalo</bdi> أو <bdi>Holafly</bdi>.</li>\n<li>اختاروا <bdi>Japan eSIM</bdi> والباقة اللي تكفي مدة الرحلة.</li>\n<li>ثبّتوا الشريحة على الجوال قبل السفر.</li></ol>\n<div class=\"note\">إذا ما اشتغل النت عند الوصول، اتصلوا بشبكة <bdi>Wi-Fi</bdi> المجانية في المطار.</div>", "الدفع والكاش": "<ul>\n<li>بعد الجوازات واستلام الشنط والجمارك تطلعون على <bdi>Arrival Lobby</bdi>.</li>\n<li>دوروا علامة <bdi>ATM / Cash Service</bdi> واسحبوا مبلغ للطوارئ.</li>\n<li>بطاقة <bdi>Suica</bdi> بعد تنفع للدفع في كثير من المحلات وأجهزة البيع.</li></ul>", "المواصلات وSuica": "<p>بطاقة مواصلات تنشحن، تريحكم من شراء تذكرة لكل مشوار.</p><ul>\n<li>تنفع للقطارات والمترو والباصات.</li>\n<li>مرّروها على بوابة <bdi>IC</bdi> عند الدخول والخروج وتنخصم الأجرة لحالها.</li>\n<li>تطلعونها من مطار ناريتا إذا عندكم وقت، أو بعدين من محطات القطار.</li>\n<li>كل شخص يحتاج بطاقة لحاله.</li></ul>\n<h4>طريقة الشراء من الجهاز</h4>\n<div class=\"note\">تجنبوا أجهزة الشحن فقط، وتأكدوا إن عليه علامة <bdi>Suica</bdi>.</div><ol>\n<li>اختاروا اللغة الإنجليزية.</li><li>اختاروا «شراء بطاقة جديدة».</li><li>اختاروا <bdi>Blank Suica</bdi>.</li>\n<li>اختاروا المبلغ.</li><li>ادفعوا بالبطاقة البنكية وأدخلوا رمزها، أو حطوا الكاش بالجهاز.</li>\n<li>استلموا البطاقة ومرّروها عند بوابة المحطة.</li></ol>", "الكهرباء والتجهيزات": "<ul>\n<li>جهزوا محوّل فيش <bdi>Type A</bdi>.</li>\n<li>كهرباء اليابان <bdi>100V</bdi>، فبعض أجهزة الشعر (مثل الاستشوار) ممكن تشتغل أضعف إذا ما كانت مصممة لها.</li>\n<li>جهزوا النت والتطبيقات على الجوال قبل السفر.</li></ul>", "البقالة اليابانية": "<p>أشياء تستاهل التجربة من البقالات (<bdi>7-Eleven</bdi> وغيرها):</p><ul>\n<li><bdi>Egg Sandwich — ساندويتش البيض</bdi></li><li><bdi>Onigiri — تونة أو سلمون</bdi></li><li><bdi>Melon Pan</bdi></li><li><bdi>7-Eleven Smoothie</bdi></li><li><bdi>Double Cream Puff</bdi></li><li><bdi>OHAYO BRULEE Ice Cream</bdi></li><li><bdi>Big Pucchin Pudding</bdi></li><li><bdi>Egg & Fermented Butter French Toast</bdi></li><li><bdi>Meiji Essel Super Cup</bdi></li><li><bdi>Choco Monaka Jumbo</bdi></li><li><bdi>Hokkaido Melon Cream Bread</bdi></li><li><bdi>Tropicana Essentials Peach Blend</bdi></li><li><bdi>Jagabee</bdi></li><li><bdi>Chilled Moist Baumkuchen</bdi></li><li><bdi>Yukimi Daifuku</bdi></li><li><bdi>Pancakes with Maple Syrup & Margarine</bdi></li><li><bdi>Jagarico Salad</bdi></li></ul>\n<div class=\"note\">السموذي: كوب فواكه مجمدة تحطونه بماكينة الـ<bdi>Smoothie</bdi> داخل الفرع. وتأكدوا من الحلال بتطبيق <bdi>Halal Gourmet Japan</bdi>.</div>"};
     function openModal(title) {
-      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalTitle').innerHTML = title.replace(/و(eSIM|Suica)/, 'و&#8239;<bdi>$1</bdi>');
+      const body = document.querySelector('.modal-body');
+      body.innerHTML = SECTIONS[title] || 'ستُضاف معلومات هذا القسم هنا';
+      body.classList.toggle('filled', !!SECTIONS[title]);
+      body.scrollTop = 0;
       document.getElementById('modalOverlay').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
