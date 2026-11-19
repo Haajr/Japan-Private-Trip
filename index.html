@@ -1324,6 +1324,35 @@
 .kd-shops{margin:18px 0 6px;background:#fffaf0;border:1.5px solid #e9d6bf;border-radius:16px;padding:14px}.kd-shops h4{margin:0 0 10px;color:#9b2420;font-size:18px}.kd-shopgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kd-shop{display:flex;flex-direction:column;gap:4px;padding:10px 12px;border-radius:12px;background:#fff;border:1px solid #efdcc6;text-decoration:none;color:#3a2a22;line-height:1.6}.kd-shop b{color:#9b2420;font-size:15px}.kd-shop span{font-size:13.5px}.kd-shop em{font-style:normal;font-size:12.5px;color:#9b2420;font-weight:700}@media(max-width:420px){.kd-shopgrid{grid-template-columns:1fr}}
 .kd-pic img,.kd-thumb{object-fit:cover!important;aspect-ratio:4/3}
 </style>
+<style id="kz-css">
+.kz{position:relative;padding:6px 4px 10px}
+.kz-stop{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:center;padding:34px 0 30px}
+.kz-l .kz-art{order:2}.kz-l .kz-card{order:1}
+.kz-path{position:absolute;inset:0;width:100%;height:100%;z-index:0;overflow:visible}
+.kz-path path{fill:none;stroke:#9b2420;stroke-width:2.6;stroke-dasharray:8 7;stroke-linecap:round;opacity:.55}
+.kz-num{position:absolute;top:2px;z-index:3;width:38px;height:38px;border-radius:50%;background:#9b2420;color:#fffaf0;font:800 19px/38px inherit;text-align:center;box-shadow:0 0 0 5px #f6efe2,0 4px 10px rgba(80,30,20,.25)}
+.kz-r .kz-num{right:calc(15% - 19px)}.kz-l .kz-num{left:calc(15% - 19px)}
+.kz-art{position:relative;z-index:1;border:0;padding:0;background:none;cursor:zoom-in;display:block}
+.kz-art{width:100%;align-self:center}.kz .kz-art img{width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:4/3!important;aspect-ratio:4/3;object-fit:cover;display:block;-webkit-mask-image:radial-gradient(ellipse 72% 70% at 50% 50%,#000 58%,transparent 100%);mask-image:radial-gradient(ellipse 72% 70% at 50% 50%,#000 58%,transparent 100%)}
+.kz-card{position:relative;z-index:2;background:#fffaf0;border:1.5px solid #e6d6bd;border-radius:16px;padding:14px 14px 12px;box-shadow:0 6px 18px -10px rgba(80,30,20,.35);text-align:right}
+.kz-tag{display:inline-block;background:#f3dcd6;color:#9b2420;font-weight:800;font-size:12px;border-radius:99px;padding:2px 10px;margin-bottom:6px}
+.kz-card h3{margin:0 0 6px;font-size:18px;color:#3a2418}
+.kz-card .kd-map{display:inline-flex;align-items:center;min-height:40px;padding:6px 12px;border-radius:99px;background:#9b2420;color:#fffaf0!important;font-weight:700;font-size:14px;text-decoration:none;margin:2px 0 6px}
+.kz-card .kd-time{display:block;font-size:13px;color:#6b4a35;margin-bottom:4px}
+.kz-card ul{margin:4px 0 6px;padding-right:18px;font-size:14px;line-height:1.65}
+.kz-card .kd-link{display:inline-block;min-height:36px;line-height:34px;padding:0 12px;border:1.5px solid #9b2420;border-radius:99px;color:#9b2420;font-weight:700;font-size:13px;text-decoration:none}
+.kz-move{position:absolute;bottom:0;left:50%;transform:translateX(-50%);z-index:3;margin:0;background:#f6efe2;border:1px dashed #c9a98a;border-radius:99px;padding:2px 12px;font-size:12.5px;color:#6b4a35;white-space:nowrap}
+@media (max-width:600px){
+.kz{padding-right:30px}
+.kz:before{content:"";position:absolute;right:12px;top:10px;bottom:10px;border-right:2.6px dashed rgba(155,36,32,.55)}
+.kz-path{display:none}
+.kz-stop{grid-template-columns:1fr;gap:6px;padding:14px 0 40px}
+.kz-l .kz-art,.kz-l .kz-card{order:0}
+.kz-num,.kz-r .kz-num,.kz-l .kz-num{right:-37px;left:auto;top:14px;width:32px;height:32px;line-height:32px;font-size:16px}
+.kz-move{bottom:8px}
+}
+</style>
+<script>function kdOpen(b){var i=b.querySelector('img');if(window.openLightbox){openLightbox(i.src,i.alt)}else{window.open(i.src,'_blank')}}</script>
 </head>
 <body>
 
@@ -1467,94 +1496,72 @@
   <p class="kd-ribbon">وصول هادئ، راحة، وأول تمشية في جينزا</p>
 </header>
 
-<div class="kd-body">
-  <svg class="kd-line" viewBox="0 0 40 1000" preserveAspectRatio="none" aria-hidden="true"><path d="M20 30 C4 160 36 300 20 420 S4 700 20 970" fill="none" stroke="#fffaf0" stroke-width="7"/><path d="M20 30 C4 160 36 300 20 420 S4 700 20 970" fill="none" stroke="#9b2420" stroke-width="2.6" stroke-dasharray="7 6" stroke-linecap="round"/></svg>
-
-  <div class="kd-row">
-    <div class="kd-stop"><span class="kd-num">1</span>
-      <figure class="kd-pic"><img src="assets/days/day1-narita-mix.webp" alt="Narita Airport — Terminal 2" width="900" height="675" loading="lazy"><figcaption><bdi>Narita T2</bdi></figcaption></figure>
-      <span class="kd-move"><b aria-hidden="true">🚐</b>بالسيارة مع السائق</span>
-    </div>
-    <section class="kd-card">
-      <span class="kd-badge">1</span>
-      <img class="kd-thumb" src="assets/days/day1-narita-mix.webp" alt="" width="900" height="675" loading="lazy">
-      <div class="kd-txt">
+<div class="kz">
+<div class="kz-stop kz-r">
+  <svg class="kz-path" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M85 0 C85 45 15 55 15 100" vector-effect="non-scaling-stroke"/></svg>
+  <span class="kz-num">1</span>
+  <button type="button" class="kz-art" onclick="kdOpen(this)" aria-label="تكبير رسمة Narita Airport — Terminal 2"><img src="assets/days/day1-narita-mix.webp" alt="Narita Airport — Terminal 2" width="900" height="675" loading="lazy"></button>
+  <section class="kz-card"><span class="kz-tag">التوقف 1</span>
         <h3>الوصول إلى اليابان</h3>
         <a class="kd-map" href="https://www.google.com/maps/search/?api=1&amp;query=Narita+Airport+Terminal+2" target="_blank" rel="noopener"><bdi>Narita Airport — Terminal 2</bdi> ↗</a>
         <span class="kd-time">🕒 <bdi dir="ltr">11:55</bdi> صباحًا · بتوقيت اليابان</span>
         <ul><li>اتبعوا لوحات <bdi>Arrivals</bdi> ثم الجوازات والشنط والجمارك.</li><li>جهّزوا الجواز ورمز <bdi>Visit Japan Web</bdi> لكل شخص.</li><li>لا تتجهوا إلى <bdi>International Transfer</bdi>.</li><li>للقاء السائق اتبعوا نقطة اللقاء في قسيمة النقل.</li></ul>
         
-      </div>
-    </section>
-  </div>
-  <div class="kd-row">
-    <div class="kd-stop"><span class="kd-num">2</span>
-      <figure class="kd-pic"><img src="assets/days/day1-hotel-mix.webp" alt="Dai-ichi Hotel Tokyo" width="900" height="675" loading="lazy"><figcaption><bdi>Dai-ichi Hotel</bdi></figcaption></figure>
-      <span class="kd-move"><b aria-hidden="true">🚶</b>مشي ٣ دقائق</span>
-    </div>
-    <section class="kd-card">
-      <span class="kd-badge">2</span>
-      <img class="kd-thumb" src="assets/days/day1-hotel-mix.webp" alt="" width="900" height="675" loading="lazy">
-      <div class="kd-txt">
+      </section>
+  <p class="kz-move"><b aria-hidden="true">🚐</b>بالسيارة مع السائق</p>
+</div>
+<div class="kz-stop kz-l">
+  <svg class="kz-path" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M15 0 C15 45 85 55 85 100" vector-effect="non-scaling-stroke"/></svg>
+  <span class="kz-num">2</span>
+  <button type="button" class="kz-art" onclick="kdOpen(this)" aria-label="تكبير رسمة Dai-ichi Hotel Tokyo"><img src="assets/days/day1-hotel-np.webp" alt="Dai-ichi Hotel Tokyo" width="900" height="675" loading="lazy"></button>
+  <section class="kz-card"><span class="kz-tag">التوقف 2</span>
         <h3>الوصول إلى الفندق</h3>
         <a class="kd-map" href="https://www.google.com/maps/search/?api=1&amp;query=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi" target="_blank" rel="noopener"><bdi>Dai-ichi Hotel Tokyo</bdi> ↗</a>
         <span class="kd-time">🕒 تسجيل الدخول من ٣:٠٠ عصرًا</span>
         <ul><li>تسجيل الدخول والراحة بعد السفر.</li><li>العنوان: <bdi>1-2-6 Shinbashi, Minato</bdi>.</li></ul>
         <a class="kd-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Narita+Airport+Terminal+2&amp;destination=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi&amp;travelmode=driving" target="_blank" rel="noopener">المسار من المطار ↗</a>
-      </div>
-    </section>
-  </div>
-  <div class="kd-row">
-    <div class="kd-stop"><span class="kd-num">3</span>
-      <figure class="kd-pic"><img src="assets/days/day1-konbini-mix.webp" alt="7-Eleven Shinbashi" width="900" height="675" loading="lazy"><figcaption><bdi>7-Eleven</bdi></figcaption></figure>
-      <span class="kd-move"><b aria-hidden="true">🚶</b>مشي ٨ دقائق</span>
-    </div>
-    <section class="kd-card">
-      <span class="kd-badge">3</span>
-      <img class="kd-thumb" src="assets/days/day1-konbini-mix.webp" alt="" width="900" height="675" loading="lazy">
-      <div class="kd-txt">
+      </section>
+  <p class="kz-move"><b aria-hidden="true">🚶</b>مشي ٣ دقائق</p>
+</div>
+<div class="kz-stop kz-r">
+  <svg class="kz-path" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M85 0 C85 45 15 55 15 100" vector-effect="non-scaling-stroke"/></svg>
+  <span class="kz-num">3</span>
+  <button type="button" class="kz-art" onclick="kdOpen(this)" aria-label="تكبير رسمة 7-Eleven Shinbashi"><img src="assets/days/day1-konbini-mix.webp" alt="7-Eleven Shinbashi" width="900" height="675" loading="lazy"></button>
+  <section class="kz-card"><span class="kz-tag">التوقف 3</span>
         <h3>أقرب بقالة للفندق</h3>
         <a class="kd-map" href="https://www.google.com/maps/search/?api=1&amp;query=7-Eleven+1-13-7+Shinbashi+Tokyo" target="_blank" rel="noopener"><bdi>7-Eleven Shinbashi</bdi> ↗</a>
         <span class="kd-time">🚶 مشي ٣ دقائق من الفندق</span>
         <ul><li>ماء وسناكات وأكل خفيف لأول ليلة.</li><li>جرّبوا منتجات <bdi>7-Eleven</bdi> الشهيرة: أونيغيري، ساندويتشات، حلويات.</li></ul>
         <a class="kd-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi&amp;destination=7-Eleven+1-13-7+Shinbashi+Tokyo&amp;travelmode=walking" target="_blank" rel="noopener">المسار من الفندق ↗</a>
-      </div>
-    </section>
-  </div>
-  <div class="kd-row">
-    <div class="kd-stop"><span class="kd-num">4</span>
-      <figure class="kd-pic"><img src="assets/days/day1-boheme-mix.webp" alt="Café La Bohème Ginza" width="900" height="675" loading="lazy"><figcaption><bdi>La Bohème</bdi></figcaption></figure>
-      <span class="kd-move"><b aria-hidden="true">🚶</b>مشي قصير</span>
-    </div>
-    <section class="kd-card">
-      <span class="kd-badge">4</span>
-      <img class="kd-thumb" src="assets/days/day1-boheme-mix.webp" alt="" width="900" height="675" loading="lazy">
-      <div class="kd-txt">
+      </section>
+  <p class="kz-move"><b aria-hidden="true">🚶</b>مشي ٨ دقائق</p>
+</div>
+<div class="kz-stop kz-l">
+  <svg class="kz-path" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M15 0 C15 45 85 55 85 100" vector-effect="non-scaling-stroke"/></svg>
+  <span class="kz-num">4</span>
+  <button type="button" class="kz-art" onclick="kdOpen(this)" aria-label="تكبير رسمة Café La Bohème Ginza"><img src="assets/days/day1-boheme-np.webp" alt="Café La Bohème Ginza" width="900" height="675" loading="lazy"></button>
+  <section class="kz-card"><span class="kz-tag">التوقف 4</span>
         <h3>وجبة في جينزا</h3>
         <a class="kd-map" href="https://www.google.com/maps/search/?api=1&amp;query=Cafe+La+Boheme+Ginza%2C+6-4-1+Ginza" target="_blank" rel="noopener"><bdi>Café La Bohème Ginza</bdi> ↗</a>
         <span class="kd-time">🚶 مشي ٨ دقائق من الفندق</span>
         <ul><li>مطعم إيطالي مقترح، اختاروا الوقت حسب طاقتكم.</li><li>العنوان: <bdi>6-4-1 Ginza</bdi>، الطابق <bdi>B1</bdi>.</li><li>غير موثّق حلال؛ تأكدوا من المكوّنات والصلصات.</li></ul>
         <a class="kd-link" href="https://boheme.jp/ginza/" target="_blank" rel="noopener">موقع المطعم ↗</a>
-      </div>
-    </section>
-  </div>
-  <div class="kd-row">
-    <div class="kd-stop"><span class="kd-num">5</span>
-      <figure class="kd-pic"><img src="assets/days/day1-wako-mix.webp" alt="Ginza · Chuo-dori / Wako" width="900" height="675" loading="lazy"><figcaption><bdi>Chuo-dori</bdi></figcaption></figure>
-      
-    </div>
-    <section class="kd-card">
-      <span class="kd-badge">5</span>
-      <img class="kd-thumb" src="assets/days/day1-wako-mix.webp" alt="" width="900" height="675" loading="lazy">
-      <div class="kd-txt">
+      </section>
+  <p class="kz-move"><b aria-hidden="true">🚶</b>مشي قصير</p>
+</div>
+<div class="kz-stop kz-r">
+  <svg class="kz-path" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M85 0 C85 45 15 55 15 100" vector-effect="non-scaling-stroke"/></svg>
+  <span class="kz-num">5</span>
+  <button type="button" class="kz-art" onclick="kdOpen(this)" aria-label="تكبير رسمة Ginza · Chuo-dori / Wako"><img src="assets/days/day1-wako-np.webp" alt="Ginza · Chuo-dori / Wako" width="900" height="675" loading="lazy"></button>
+  <section class="kz-card"><span class="kz-tag">التوقف 5</span>
         <h3>تمشية شارع Chuo-dori</h3>
         <a class="kd-map" href="https://www.google.com/maps/search/?api=1&amp;query=35.671735%2C139.7650442" target="_blank" rel="noopener"><bdi>Ginza · Chuo-dori / Wako</bdi> ↗</a>
         <span class="kd-time">🌙 المساء · حسب طاقتكم</span>
         <ul><li>شارع التسوق الرئيسي في جينزا: محلات وماركات ومجمعات كبيرة.</li><li>يمر بجانب مبنى <bdi>Wako</bdi> الشهير ببرج الساعة.</li><li>أسامي المحلات اللي على الشارع تحت ⬇️</li></ul>
         <a class="kd-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=35.671735%2C139.7650442&amp;destination=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi&amp;travelmode=walking" target="_blank" rel="noopener">العودة للفندق ↗</a>
-      </div>
-    </section>
-  </div>
+      </section>
+  
+</div>
 </div>
 <section class="kd-shops"><h4>🛍️ محلات شارع <bdi>Chuo-dori</bdi></h4><div class="kd-shopgrid"><a class="kd-shop" href="https://www.google.com/maps/search/?api=1&amp;query=Ginza+Wako+Tokyo" target="_blank" rel="noopener"><b><bdi>Ginza Wako</bdi></b><span>مبنى برج الساعة؛ ساعات ومجوهرات وهدايا فاخرة.</span><em>📍 قوقل ماب ↗</em></a><a class="kd-shop" href="https://www.google.com/maps/search/?api=1&amp;query=Ginza+Mitsukoshi+Tokyo" target="_blank" rel="noopener"><b><bdi>Ginza Mitsukoshi</bdi></b><span>متجر كبير للماركات والكوزمتكس، وفيه دور أكل بالأسفل.</span><em>📍 قوقل ماب ↗</em></a><a class="kd-shop" href="https://www.google.com/maps/search/?api=1&amp;query=Matsuya+Ginza+Tokyo" target="_blank" rel="noopener"><b><bdi>Matsuya Ginza</bdi></b><span>مجمع فاخر للماركات والهدايا اليابانية.</span><em>📍 قوقل ماب ↗</em></a><a class="kd-shop" href="https://www.google.com/maps/search/?api=1&amp;query=GINZA+SIX+Tokyo" target="_blank" rel="noopener"><b><bdi>GINZA SIX</bdi></b><span>أكبر مجمع في جينزا، ماركات عالمية وسطح حديقة.</span><em>📍 قوقل ماب ↗</em></a><a class="kd-shop" href="https://www.google.com/maps/search/?api=1&amp;query=UNIQLO+Ginza+Tokyo" target="_blank" rel="noopener"><b><bdi>UNIQLO Ginza</bdi></b><span>أكبر فروع يونيكلو، عدة طوابق.</span><em>📍 قوقل ماب ↗</em></a><a class="kd-shop" href="https://www.google.com/maps/search/?api=1&amp;query=Ginza+Itoya+Tokyo" target="_blank" rel="noopener"><b><bdi>Ginza Itoya</bdi></b><span>قرطاسية وهدايا يابانية مميزة.</span><em>📍 قوقل ماب ↗</em></a></div></section>
 <footer class="kd-foot">
