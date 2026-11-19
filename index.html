@@ -1353,6 +1353,12 @@
 }
 </style>
 <script>function kdOpen(b){var i=b.querySelector('img');if(window.openLightbox){openLightbox(i.src,i.alt)}else{window.open(i.src,'_blank')}}</script>
+<style id="meet-css">.kd-meet{display:inline-flex;align-items:center;gap:3px;padding:2px 10px;border-radius:999px;background:#b3262b;color:#fff8ee!important;font-weight:700;text-decoration:none;white-space:nowrap}.kd-meet:active{transform:scale(.96)}
+.meet-glow{animation:meetGlow 1.2s ease 2;border-radius:16px}@keyframes meetGlow{0%,100%{box-shadow:0 0 0 0 rgba(179,38,43,0)}50%{box-shadow:0 0 0 6px rgba(179,38,43,.45)}}
+@media (prefers-reduced-motion:reduce){.meet-glow{animation:none;outline:3px solid #b3262b}}</style>
+<script>function goMeet(e){e.preventDefault();var b=document.querySelector('.folder-item[onclick*="مقابلة السائق"]');if(!b){location.hash='travel-needs';return false;}
+var smooth=!matchMedia('(prefers-reduced-motion:reduce)').matches;b.scrollIntoView({behavior:smooth?'smooth':'auto',block:'center'});
+b.classList.remove('meet-glow');void b.offsetWidth;b.classList.add('meet-glow');setTimeout(function(){b.click()},smooth?900:50);return false;}</script>
 </head>
 <body>
 
@@ -1504,7 +1510,7 @@
         <h3>الوصول إلى اليابان</h3>
         <a class="kd-map" href="https://www.google.com/maps/search/?api=1&amp;query=Narita+Airport+Terminal+2" target="_blank" rel="noopener"><bdi>Narita Airport — Terminal 2</bdi> ↗</a>
         <span class="kd-time">🕒 <bdi dir="ltr">11:55</bdi> صباحًا · بتوقيت اليابان</span>
-        <ul><li>اتبعوا لوحات <bdi>Arrivals</bdi> ثم الجوازات والشنط والجمارك.</li><li>جهّزوا الجواز ورمز <bdi>Visit Japan Web</bdi> لكل شخص.</li><li>لا تتجهوا إلى <bdi>International Transfer</bdi>.</li><li>للقاء السائق اتبعوا نقطة اللقاء في قسيمة النقل.</li></ul>
+        <ul><li>اتبعوا لوحات <bdi>Arrivals</bdi> ثم الجوازات والشنط والجمارك.</li><li>جهّزوا الجواز ورمز <bdi>Visit Japan Web</bdi> لكل شخص.</li><li>لا تتجهوا إلى <bdi>International Transfer</bdi>.</li><li>للقاء السائق اتبعوا <a href="#travel-needs" class="kd-meet" onclick="return goMeet(event)">📍 نقطة اللقاء</a> (تفتح لكم الشرح والصورة).</li></ul>
         
       </section>
   <p class="kz-move"><b aria-hidden="true">🚐</b>بالسيارة مع السائق</p>
