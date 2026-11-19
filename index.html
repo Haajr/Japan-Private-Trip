@@ -1206,6 +1206,48 @@
 @media(max-width:350px){.arrival-poster .day-place{height:180px}.arrival-poster .day-note-photo{height:82px}.arrival-poster .day-place figcaption a{font-size:9px}.arrival-poster .day-note h3{font-size:12px}.arrival-poster .day-note p{font-size:10px}.arrival-poster .day-kicker{font-size:8px}}
 
 .arrival-poster .poster-landmarks .day-place{width:92%;margin-left:8%}.arrival-poster .poster-landmarks .day-marker{left:-19px}.arrival-poster .day-note{min-height:225px}.arrival-poster .tokyo-display{font-size:72px!important}@media(min-width:700px){.arrival-poster .tokyo-display{font-size:88px!important;letter-spacing:-5px}.arrival-poster .day-note{min-height:250px}}@media(max-width:580px){.arrival-poster .tokyo-display{font-size:clamp(40px,11vw,65px)!important}.arrival-poster .day-note{min-height:214px}.arrival-poster .poster-landmarks .day-marker{left:-14px;width:24px;height:24px;font-size:12px}}
+
+/* Page three: compact, numbered travel reference. Scoped to preserve approved posters. */
+:root {--needs-paper:#fffaf2;--needs-card:#f6eee3;--needs-ink:#302b28;--needs-muted:#71675d;--needs-red:#b84742;--needs-blush:#f1ddd7;--needs-line:#dfcdbc;--needs-overlay:#302b28b3;--needs-shadow:0 14px 38px #302b2821;}
+.needs-page-frame{background:var(--needs-paper);background-image:none;min-height:0;aspect-ratio:auto;padding:0;box-shadow:var(--needs-shadow);border-color:var(--needs-line)}
+.needs-page-frame::before,.needs-page-frame::after{display:none}
+.needs-page-frame .needs-content-layer{gap:0!important;justify-content:flex-start;padding:0;height:auto}
+.needs-page-frame .needs-header{background:var(--needs-blush) url('lanterns_bg.jpg') center 38%/cover;position:relative;isolation:isolate;text-align:right;padding:28px 24px 24px;overflow:hidden;border-bottom:4px solid var(--needs-red)}
+.needs-page-frame .needs-header::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--needs-paper) 8%,#fffaf2e8 72%,#fffaf2ad);z-index:-1}
+.needs-page-frame .header-badge{color:var(--needs-red);background:none;box-shadow:none;padding:0;margin:0 0 8px;border-radius:0;letter-spacing:0;font-size:13px}
+.needs-page-frame .needs-title{font-size:32px!important;color:var(--needs-ink);letter-spacing:0;text-shadow:none;line-height:1.4;margin:0 0 4px}
+.needs-page-frame .needs-subtitle{font-size:14px!important;color:var(--needs-muted);text-shadow:none;line-height:1.7}
+.needs-page-frame .folders-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:18px;gap:10px!important;margin:0!important}
+.needs-page-frame .folder-item{padding:0;border:0;border-radius:8px;background:none;font:inherit;cursor:pointer;min-width:0;animation:none;transform:none}
+.needs-page-frame .folder-tab,.needs-page-frame .folder-paper{display:none}
+.needs-page-frame .folder-body{display:grid!important;grid-template-columns:minmax(0,1fr) 42px;position:relative;min-height:108px!important;height:100%!important;gap:8px!important;padding:14px 32px 14px 12px!important;border:1px solid var(--needs-line)!important;border-radius:8px;background:var(--needs-card)!important;box-shadow:none!important;align-items:center!important}
+.needs-page-frame .folder-body::before{display:none}
+.needs-page-frame .folder-info{grid-column:1;grid-row:1;min-width:0;overflow:visible;flex-basis:auto}
+.needs-page-frame .folder-name{font-size:16px!important;font-weight:700!important;line-height:1.5!important;color:var(--needs-ink);white-space:normal!important;overflow:visible!important;letter-spacing:0}
+.needs-page-frame .folder-hint{font-size:12px!important;line-height:1.6;color:var(--needs-muted);margin-top:3px}
+.needs-page-frame .folder-icon{grid-column:2;grid-row:1;width:42px;height:42px;border-radius:50%;background:var(--needs-blush);color:var(--needs-red);box-shadow:none;transform:none!important}
+.needs-page-frame .folder-icon svg{width:26px;height:26px;stroke-linecap:round;stroke-linejoin:round}
+.needs-page-frame .section-number{position:absolute;right:8px;top:11px;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;font-size:12px;color:var(--needs-paper);background:var(--needs-red)}
+.needs-page-frame .folder-arrow{display:block!important;position:absolute;left:12px;bottom:7px;color:var(--needs-red);font-size:16px;opacity:1}
+.needs-page-frame .foot-card{grid-column:1/-1!important}.needs-page-frame .foot-card .folder-body{min-height:92px!important;background:var(--needs-card)!important}
+.needs-page-frame .folder-item:hover .folder-body{border-color:var(--needs-red)!important;background:var(--needs-paper)!important}.needs-page-frame .folder-item:focus-visible{outline:3px solid var(--needs-red);outline-offset:3px}
+.modal-overlay{background:var(--needs-overlay)}.modal-sheet,.convenience-theme .modal-sheet{background:var(--needs-paper);background-image:none;border-radius:8px;max-height:92dvh;height:92dvh}
+.modal-header,.convenience-theme .modal-header{background:var(--needs-paper);border-bottom:1px solid var(--needs-line);padding:16px;gap:12px;box-shadow:none}
+.modal-title-wrap{min-width:0;overflow:visible}.modal-title,.convenience-theme .modal-title{white-space:normal;overflow:visible;font-size:19px;line-height:1.5;color:var(--needs-ink);letter-spacing:0}
+.modal-icon{display:grid;place-items:center;width:36px;height:36px;color:var(--needs-red);background:var(--needs-blush);border-radius:50%}.modal-icon svg{width:24px;height:24px}
+.close-btn,.convenience-theme .close-btn{background:var(--needs-blush);color:var(--needs-red);width:44px;height:44px}
+.modal-body{background:var(--needs-paper);border:0;border-radius:0;box-shadow:none;text-align:right;color:var(--needs-ink);font-weight:400;padding:20px 20px 32px;min-height:0;font-size:16px;line-height:1.8}
+.modal-body p{font-size:16px;line-height:1.8}.modal-body .info-point{position:relative;padding-right:18px;margin-bottom:12px}.modal-body .info-point::before{content:'•';position:absolute;right:0;color:var(--needs-red)}
+.modal-body a{color:var(--needs-red);text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere;display:inline-block;padding-block:8px;min-height:44px}
+.modal-body figure{border:1px solid var(--needs-line);border-radius:8px;background:var(--needs-card);padding:10px;max-width:100%}.modal-body figure::after{background:var(--needs-ink);color:var(--needs-paper)}
+.modal-body figure img{height:auto!important;max-height:240px!important}
+.app-card,.convenience-card,.foot-products article{background:var(--needs-card);border:1px solid var(--needs-line);box-shadow:none;border-radius:8px}
+.app-header-row{display:grid;grid-template-columns:minmax(0,1fr);gap:5px}.app-info{min-width:0}.app-title-text{white-space:normal;overflow-wrap:anywhere;direction:ltr;text-align:right}.app-badge-tag{justify-self:start;white-space:normal;background:var(--needs-blush);color:var(--needs-red)}
+.convenience-card::before{background:var(--needs-red)}.convenience-card .card-title,.foot-products h2{color:var(--needs-red)}
+.foot-products article{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;padding:16px;margin:12px 0;align-items:center}.foot-products article img{width:120px;height:150px;object-fit:contain;margin:0;cursor:zoom-in}.foot-products h2{font-size:17px;line-height:1.5}.foot-products h3{font-size:13px;color:var(--needs-muted);overflow-wrap:anywhere;line-height:1.7}.foot-products .foot-note{font-size:14px;color:var(--needs-muted);border-top:1px solid var(--needs-line);padding-top:16px}
+@media(max-width:580px){.needs-page-frame .needs-header{padding:24px 18px 20px}.needs-page-frame .needs-title{font-size:28px!important}.needs-page-frame .folders-grid{padding:12px;gap:8px!important}.needs-page-frame .folder-body{grid-template-columns:minmax(0,1fr);padding:37px 12px 28px!important;min-height:116px!important;align-content:start}.needs-page-frame .folder-icon{position:absolute;top:9px;left:10px;width:28px;height:28px}.needs-page-frame .folder-icon svg{width:20px;height:20px}.needs-page-frame .folder-name{font-size:16px!important}.needs-page-frame .folder-hint{font-size:12px!important}.needs-page-frame .section-number{top:12px;right:12px}.needs-page-frame .foot-card .folder-body{min-height:104px!important}.modal-sheet{width:100%;height:100dvh;max-height:100dvh;border-radius:0}.modal-title{font-size:18px}.modal-body{padding:16px 14px 28px}.foot-products article{grid-template-columns:90px minmax(0,1fr);gap:12px;padding:12px}.foot-products article img{width:90px;height:130px}.app-card{align-items:flex-start}.app-icon{width:44px;height:44px;flex-shrink:0}}
+@media(prefers-reduced-motion:reduce){.folder-item,.modal-overlay,.modal-sheet{animation:none!important;transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -1221,138 +1263,127 @@
       <img src="route.jpg" alt="Japan Trip Route Poster" class="poster-img" />
     </article>
 
-    <!-- الصفحة 3: صفحة احتياجات الرحلة الجديدة كلياً (الفوانيس والمجلدات الورقية) -->
-    <article class="needs-page-frame">
-      <div class="needs-content-layer">
-        
-        <header class="needs-header">
-          <div class="header-badge">
-            <span>✦</span>
-            <span>دليلكم قبل الانطلاق</span>
-          </div>
-          <h2 class="needs-title">احتياجات الرحلة</h2>
-          <p class="needs-subtitle">تجهيزات بسيطة لرحلة أسهل</p>
-        </header>
+ <!-- الصفحة 3: صفحة احتياجات الرحلة الجديدة كلياً (الفوانيس والمجلدات الورقية) -->
+<article class="needs-page-frame" id="travel-needs">
+<div class="needs-content-layer">
+<header class="needs-header">
+<div class="header-badge">
+<span>✦</span>
+<span>دليلكم قبل الانطلاق</span>
+</div>
+<h2 class="needs-title">احتياجات الرحلة</h2>
+<p class="needs-subtitle">تجهيزات بسيطة لرحلة أسهل</p>
+</header>
+<!-- شبكة المجلدات التفاعلية -->
+<section aria-label="مجلدات احتياجات الرحلة" class="folders-grid">
+<!-- مجلد 1: تجهيز البيانات قبل السفر -->
+<button aria-controls="modalOverlay" aria-haspopup="dialog" class="folder-item theme-blue" onclick="openFolder('تجهيز البيانات قبل السفر', '🛂')" type="button">
+<div class="folder-tab"></div>
+<div class="folder-paper"></div>
+<div class="folder-body">
+<div aria-hidden="true" class="folder-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M4 4h16v16H4z M8 8h8 M8 12h8 M8 16h4"></path></svg></div>
+<div class="folder-info">
+<span class="folder-name">قبل السفر</span>
+<span class="folder-hint">البيانات والتجهيزات</span>
+</div>
+<span class="folder-arrow">←</span>
+<span aria-hidden="true" class="section-number">١</span></div>
+</button>
+<!-- مجلد 2: الإنترنت -->
+<button aria-controls="modalOverlay" aria-haspopup="dialog" class="folder-item theme-green" onclick="openFolder('الإنترنت', '📶')" type="button">
+<div class="folder-tab"></div>
+<div class="folder-paper"></div>
+<div class="folder-body">
+<div aria-hidden="true" class="folder-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3 9q9-8 18 0 M6 12q6-5 12 0 M9 15q3-2 6 0 M12 19h.01"></path></svg></div>
+<div class="folder-info">
+<span class="folder-name">الإنترنت</span>
+<span class="folder-hint">الشريحة والاتصال</span>
+</div>
+<span class="folder-arrow">←</span>
+<span aria-hidden="true" class="section-number">٢</span></div>
+</button>
+<!-- مجلد 3: التطبيقات الضرورية لليابان -->
+<button aria-controls="modalOverlay" aria-haspopup="dialog" class="folder-item theme-orange" onclick="openFolder('التطبيقات الضرورية لليابان', '📱')" type="button">
+<div class="folder-tab"></div>
+<div class="folder-paper"></div>
+<div class="folder-body">
+<div aria-hidden="true" class="folder-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M7 2h10v20H7z M11 18h2"></path></svg></div>
+<div class="folder-info">
+<span class="folder-name">التطبيقات</span>
+<span class="folder-hint">التطبيقات الضرورية</span>
+</div>
+<span class="folder-arrow">←</span>
+<span aria-hidden="true" class="section-number">٣</span></div>
+</button>
+<!-- مجلد 4: Convenience Store Trending -->
+<button aria-controls="modalOverlay" aria-haspopup="dialog" class="folder-item theme-teal" onclick="openFolder('Convenience Store Trending', '🍓')" type="button">
+<div class="folder-tab"></div>
+<div class="folder-paper"></div>
+<div class="folder-body">
+<div aria-hidden="true" class="folder-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M4 8h16v12H4z M7 8V5h10v3 M8 12h8"></path></svg></div>
+<div class="folder-info">
+<span class="folder-name" dir="rtl">سناكات اليابان</span>
+<span class="folder-hint">تجارب من البقالة</span>
+</div>
+<span class="folder-arrow">←</span>
+<span aria-hidden="true" class="section-number">٤</span></div>
+</button>
+<!-- مجلد 5: الوصول إلى اليابان -->
+<button aria-controls="modalOverlay" aria-haspopup="dialog" class="folder-item theme-indigo" onclick="openFolder('الوصول إلى اليابان', '🛬')" type="button">
+<div class="folder-tab"></div>
+<div class="folder-paper"></div>
+<div class="folder-body">
+<div aria-hidden="true" class="folder-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M2 12h20 M12 3l4 9-4 9 M12 3l-4 9 4 9"></path></svg></div>
+<div class="folder-info">
+<span class="folder-name">الوصول إلى اليابان</span>
+<span class="folder-hint">خطوات الوصول</span>
+</div>
+<span class="folder-arrow">←</span>
+<span aria-hidden="true" class="section-number">٥</span></div>
+</button>
+<!-- مجلد 6: الدفع والكاش في اليابان -->
+<button aria-controls="modalOverlay" aria-haspopup="dialog" class="folder-item theme-cream" onclick="openFolder('الدفع والكاش في اليابان', '💴')" type="button">
+<div class="folder-tab"></div>
+<div class="folder-paper"></div>
+<div class="folder-body">
+<div aria-hidden="true" class="folder-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3 6h18v13H3z M3 10h18 M15 15h3"></path></svg></div>
+<div class="folder-info">
+<span class="folder-name">الدفع والكاش</span>
+<span class="folder-hint">الدفع أثناء الرحلة</span>
+</div>
+<span class="folder-arrow">←</span>
+<span aria-hidden="true" class="section-number">٦</span></div>
+</button>
+<!-- مجلد 7: العثور على نقطة مقابلة السائق -->
+<button aria-controls="modalOverlay" aria-haspopup="dialog" class="folder-item theme-coral" onclick="openFolder('العثور على نقطة مقابلة السائق', '🚗')" type="button">
+<div class="folder-tab"></div>
+<div class="folder-paper"></div>
+<div class="folder-body">
+<div aria-hidden="true" class="folder-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M4 16V9l2-4h12l2 4v7 M4 10h16 M7 14h1 M16 14h1 M5 16v3 M19 16v3"></path></svg></div>
+<div class="folder-info">
+<span class="folder-name">مقابلة السائق</span>
+<span class="folder-hint">مكان اللقاء</span>
+</div>
+<span class="folder-arrow">←</span>
+<span aria-hidden="true" class="section-number">٧</span></div>
+</button>
+<!-- مجلد 8: بطاقة Suica -->
+<button aria-controls="modalOverlay" aria-haspopup="dialog" class="folder-item theme-purple" onclick="openFolder('بطاقة Suica', '🚅')" type="button">
+<div class="folder-tab"></div>
+<div class="folder-paper"></div>
+<div class="folder-body">
+<div aria-hidden="true" class="folder-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M5 3h14v15H5z M5 11h14 M8 15h.01 M16 15h.01 M8 18l-2 3 M16 18l2 3"></path></svg></div>
+<div class="folder-info">
+<span class="folder-name">بطاقة Suica</span>
+<span class="folder-hint">التنقل بسهولة</span>
+</div>
+<span class="folder-arrow">←</span>
+<span aria-hidden="true" class="section-number">٨</span></div>
+</button>
+<button aria-controls="modalOverlay" aria-haspopup="dialog" class="folder-item theme-coral foot-card" onclick="openFolder('راحة القدم بعد المشي', 'راحة')" type="button"><span class="folder-body"><span aria-hidden="true" class="folder-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M9 3c-2 4-1 7-3 10-2 3-2 7 1 8 3 1 6-1 6-4V9 M17 3v4 M20 5v4 M15 5v3"></path></svg></span><span class="folder-info"><span class="folder-name">راحة القدم بعد المشي</span><span class="folder-hint">٦ منتجات بالصور · تبريد ودفء</span></span><span class="folder-arrow">←</span><span aria-hidden="true" class="section-number">٩</span></span></button></section>
+</div>
+</article>
 
-        <!-- شبكة المجلدات التفاعلية -->
-        <section class="folders-grid" aria-label="مجلدات احتياجات الرحلة">
-          
-          <!-- مجلد 1: تجهيز البيانات قبل السفر -->
-          <div class="folder-item theme-blue" role="button" tabindex="0" onclick="openFolder('تجهيز البيانات قبل السفر', '🛂')" onkeydown="handleKey(event, 'تجهيز البيانات قبل السفر', '🛂')">
-            <div class="folder-tab"></div>
-            <div class="folder-paper"></div>
-            <div class="folder-body">
-              <div class="folder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16v16H4z M8 8h8 M8 12h8 M8 16h4"/></svg></div>
-              <div class="folder-info">
-                <span class="folder-name">قبل السفر</span>
-                <span class="folder-hint">البيانات والتجهيزات</span>
-              </div>
-              <span class="folder-arrow">←</span>
-            </div>
-          </div>
-
-          <!-- مجلد 2: الإنترنت -->
-          <div class="folder-item theme-green" role="button" tabindex="0" onclick="openFolder('الإنترنت', '📶')" onkeydown="handleKey(event, 'الإنترنت', '📶')">
-            <div class="folder-tab"></div>
-            <div class="folder-paper"></div>
-            <div class="folder-body">
-              <div class="folder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9q9-8 18 0 M6 12q6-5 12 0 M9 15q3-2 6 0 M12 19h.01"/></svg></div>
-              <div class="folder-info">
-                <span class="folder-name">الإنترنت</span>
-                <span class="folder-hint">الشريحة والاتصال</span>
-              </div>
-              <span class="folder-arrow">←</span>
-            </div>
-          </div>
-
-          <!-- مجلد 3: التطبيقات الضرورية لليابان -->
-          <div class="folder-item theme-orange" role="button" tabindex="0" onclick="openFolder('التطبيقات الضرورية لليابان', '📱')" onkeydown="handleKey(event, 'التطبيقات الضرورية لليابان', '📱')">
-            <div class="folder-tab"></div>
-            <div class="folder-paper"></div>
-            <div class="folder-body">
-              <div class="folder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 2h10v20H7z M11 18h2"/></svg></div>
-              <div class="folder-info">
-                <span class="folder-name">التطبيقات</span>
-                <span class="folder-hint">التطبيقات الضرورية</span>
-              </div>
-              <span class="folder-arrow">←</span>
-            </div>
-          </div>
-
-          <!-- مجلد 4: Convenience Store Trending -->
-          <div class="folder-item theme-teal" role="button" tabindex="0" onclick="openFolder('Convenience Store Trending', '🍓')" onkeydown="handleKey(event, 'Convenience Store Trending', '🍓')">
-            <div class="folder-tab"></div>
-            <div class="folder-paper"></div>
-            <div class="folder-body">
-              <div class="folder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 8h16v12H4z M7 8V5h10v3 M8 12h8"/></svg></div>
-              <div class="folder-info">
-                <span class="folder-name" dir="ltr">سناكات اليابان</span>
-                <span class="folder-hint">تجارب من البقالة</span>
-              </div>
-              <span class="folder-arrow">←</span>
-            </div>
-          </div>
-
-          <!-- مجلد 5: الوصول إلى اليابان -->
-          <div class="folder-item theme-indigo" role="button" tabindex="0" onclick="openFolder('الوصول إلى اليابان', '🛬')" onkeydown="handleKey(event, 'الوصول إلى اليابان', '🛬')">
-            <div class="folder-tab"></div>
-            <div class="folder-paper"></div>
-            <div class="folder-body">
-              <div class="folder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 12h20 M12 3l4 9-4 9 M12 3l-4 9 4 9"/></svg></div>
-              <div class="folder-info">
-                <span class="folder-name">الوصول إلى اليابان</span>
-                <span class="folder-hint">خطوات الوصول</span>
-              </div>
-              <span class="folder-arrow">←</span>
-            </div>
-          </div>
-
-          <!-- مجلد 6: الدفع والكاش في اليابان -->
-          <div class="folder-item theme-cream" role="button" tabindex="0" onclick="openFolder('الدفع والكاش في اليابان', '💴')" onkeydown="handleKey(event, 'الدفع والكاش في اليابان', '💴')">
-            <div class="folder-tab"></div>
-            <div class="folder-paper"></div>
-            <div class="folder-body">
-              <div class="folder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h18v13H3z M3 10h18 M15 15h3"/></svg></div>
-              <div class="folder-info">
-                <span class="folder-name">الدفع والكاش</span>
-                <span class="folder-hint">الدفع أثناء الرحلة</span>
-              </div>
-              <span class="folder-arrow">←</span>
-            </div>
-          </div>
-
-          <!-- مجلد 7: العثور على نقطة مقابلة السائق -->
-          <div class="folder-item theme-coral" role="button" tabindex="0" onclick="openFolder('العثور على نقطة مقابلة السائق', '🚗')" onkeydown="handleKey(event, 'العثور على نقطة مقابلة السائق', '🚗')">
-            <div class="folder-tab"></div>
-            <div class="folder-paper"></div>
-            <div class="folder-body">
-              <div class="folder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 16V9l2-4h12l2 4v7 M4 10h16 M7 14h1 M16 14h1 M5 16v3 M19 16v3"/></svg></div>
-              <div class="folder-info">
-                <span class="folder-name">مقابلة السائق</span>
-                <span class="folder-hint">مكان اللقاء</span>
-              </div>
-              <span class="folder-arrow">←</span>
-            </div>
-          </div>
-
-          <!-- مجلد 8: بطاقة Suica -->
-          <div class="folder-item theme-purple" style="--folder-bg: #f8f5fc !important; --folder-accent: #6b4c9a !important; --folder-border: rgba(107, 76, 154, 0.25) !important; --folder-shadow: rgba(107, 76, 154, 0.12) !important; --folder-shadow-hover: rgba(107, 76, 154, 0.22) !important;" role="button" tabindex="0" onclick="openFolder('بطاقة Suica', '🚅')" onkeydown="handleKey(event, 'بطاقة Suica', '🚅')">
-            <div class="folder-tab"></div>
-            <div class="folder-paper"></div>
-            <div class="folder-body">
-              <div class="folder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 3h14v15H5z M5 11h14 M8 15h.01 M16 15h.01 M8 18l-2 3 M16 18l2 3"/></svg></div>
-              <div class="folder-info">
-                <span class="folder-name">بطاقة Suica</span>
-                <span class="folder-hint">التنقل بسهولة</span>
-              </div>
-              <span class="folder-arrow">←</span>
-            </div>
-          </div>
-
-        <button class="folder-item theme-coral foot-card" type="button" onclick="openFolder('راحة القدم بعد المشي', 'راحة')"><span class="folder-body"><span class="folder-icon" aria-hidden="true">راحة</span><span class="folder-info"><span class="folder-name">راحة القدم بعد المشي</span><span class="folder-hint">٦ منتجات بالصور · تبريد ودفء</span></span><span class="folder-arrow">←</span></span></button></section>
-
-      </div>
-    </article>
 <article id="day-2026-11-29" class="trip-day arrival-poster"><div class="poster-composition"><div class="poster-left"><header class="day-heading"><span class="day-kicker">اليوم الأول · TOKYO</span><p class="day-date">الأحد ٢٩ نوفمبر ٢٠٢٦</p><h2><span class="tokyo-display">TOKYO</span><span class="arrival-display">أول يوم في اليابان <b aria-hidden="true">●</b></span></h2><p class="day-intro">وصول هادئ، راحة، وأول تمشية في جينزا.</p></header><div class="poster-landmarks"><svg class="poster-curve" viewBox="0 0 300 850" preserveAspectRatio="none" aria-hidden="true"><path d="M20 75 C5 140 5 190 23 265 S6 360 20 440 S5 550 24 615 S5 735 20 800" stroke="#fff9ed" stroke-width="9" fill="none"/><path d="M20 75 C5 140 5 190 23 265 S6 360 20 440 S5 550 24 615 S5 735 20 800" stroke="#9d2925" stroke-width="3" stroke-dasharray="7 6" fill="none" stroke-linecap="round"/></svg><figure class="day-place poster-stop-1"><span class="day-marker">1</span><img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Narita_Airport_Terminal_2_exterior.jpg" alt="Narita Airport — Terminal 2" loading="lazy" referrerpolicy="no-referrer"><figcaption><a href="https://www.google.com/maps/search/?api=1&amp;query=Narita+Airport+Terminal+2" target="_blank" rel="noopener">Narita Airport — Terminal 2 ↗</a><span>مطار ناريتا · المبنى ٢</span></figcaption></figure><figure class="day-place poster-stop-2"><span class="day-marker">2</span><img src="https://on-sen.work/_astro/2876_ZVTOve.webp" alt="Dai-ichi Hotel Tokyo" loading="lazy" referrerpolicy="no-referrer"><figcaption><a href="https://www.google.com/maps/search/?api=1&amp;query=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi" target="_blank" rel="noopener">Dai-ichi Hotel Tokyo ↗</a><span>الفندق · شيمباشي</span></figcaption></figure><figure class="day-place poster-stop-3"><span class="day-marker">3</span><img src="https://tblg.k-img.com/restaurant/images/Rvw/280891/640x640_rect_191ac8c98cfc3b6a72a537e3d29149a8.jpg" alt="Café La Bohème Ginza" loading="lazy" referrerpolicy="no-referrer"><figcaption><a href="https://www.google.com/maps/search/?api=1&amp;query=Cafe+La+Boheme+Ginza%2C+6-4-1+Ginza" target="_blank" rel="noopener">Café La Bohème Ginza ↗</a><span>مطعم إيطالي · مقترح</span></figcaption></figure><figure class="day-place poster-stop-4"><span class="day-marker">4</span><img src="https://place.matcha-jp.com/resize/720x2000/2024/03/19-18-12-18-113dc12a8e50f4e15e011219b35e6e95b19.webp" alt="Ginza · Chuo-dori / Wako" loading="lazy" referrerpolicy="no-referrer"><figcaption><a href="https://www.google.com/maps/search/?api=1&amp;query=35.671735%2C139.7650442" target="_blank" rel="noopener">Ginza · Chuo-dori / Wako ↗</a><span>تمشية جينزا</span></figcaption></figure></div><aside class="poster-tip"><strong>قبل الانطلاق</strong><p>جهّزوا رمز الدخول، واتبعوا نقطة لقاء السائق في قسيمة الحجز.</p></aside></div><div class="poster-right"><section class="day-note poster-note-1"><img class="day-note-photo" src="https://upload.wikimedia.org/wikipedia/commons/7/76/Narita_Airport_Terminal_2_exterior.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"><div class="day-note-title"><span>01</span><h3>الوصول إلى اليابان</h3></div><span class="arrival-time">١١:٥٥ صباحًا · بتوقيت اليابان</span><p>اتبعوا لوحات Arrivals، ثم الجوازات، واستلام الشنط والجمارك.</p><details><summary>التفاصيل</summary><p>جهّزوا جواز السفر ورمز Visit Japan Web لكل شخص. لا تتجهوا إلى International Transfer.</p><p>للقاء السائق، اتبعوا نقطة اللقاء الموضّحة في قسيمة النقل وتواصلوا معه؛ لا تعتمدوا على نقطة عامة داخل المطار.</p></details></section><section class="day-note poster-note-2"><img class="day-note-photo" src="https://on-sen.work/_astro/2876_ZVTOve.webp" alt="" loading="lazy" referrerpolicy="no-referrer"><div class="day-note-title"><span>02</span><h3>الوصول إلى الفندق</h3></div><p>توجّهوا إلى الفندق، ثم تسجيل الدخول والراحة بعد السفر.</p><details><summary>التفاصيل</summary><p>تسجيل الدخول المعتاد من ٣:٠٠ عصرًا، حسب شروط حجزكم.</p><p>للماء والسناكات: <a href="https://www.google.com/maps/search/?api=1&query=7-Eleven+1-13-7+Shinbashi+Tokyo" target="_blank" rel="noopener">7-Eleven — فرع شيمباشي ١-١٣-٧</a>.</p></details><a class="day-small-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Narita+Airport+Terminal+2&amp;destination=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi&amp;travelmode=driving" target="_blank" rel="noopener">المسار من المطار ↗</a></section><section class="day-note poster-note-3"><img class="day-note-photo" src="https://tblg.k-img.com/restaurant/images/Rvw/280891/640x640_rect_191ac8c98cfc3b6a72a537e3d29149a8.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"><div class="day-note-title"><span>03</span><h3>وجبة في جينزا</h3></div><p>مطعم إيطالي مقترح من الخطة؛ اختاروا الوجبة حسب وقت وصولكم واستعدادكم للخروج.</p><details><summary>التفاصيل</summary><p>العنوان: 6-4-1 Ginza، مبنى Tokaido Ginza، الطابق B1.</p><p>المطعم غير موثّق حلال؛ تأكدوا من مكوّنات الطلب والصلصات.</p><p><a href="https://boheme.jp/ginza/" target="_blank" rel="noopener">الموقع الرسمي للمطعم</a></p></details></section><section class="day-note poster-note-4"><img class="day-note-photo" src="https://place.matcha-jp.com/resize/720x2000/2024/03/19-18-12-18-113dc12a8e50f4e15e011219b35e6e95b19.webp" alt="" loading="lazy" referrerpolicy="no-referrer"><div class="day-note-title"><span>04</span><h3>أول مساء في طوكيو</h3></div><p>تمشية في شارع Chuo-dori قرب برج ساعة Wako، ثم العودة للفندق حسب طاقتكم. <a href="https://www.google.com/maps/dir/?api=1&origin=Cafe+La+Boheme+Ginza%2C+6-4-1+Ginza&destination=35.671735%2C139.7650442&travelmode=walking" target="_blank" rel="noopener">المشي من المطعم ↗</a></p><details><summary>التفاصيل</summary><p>جولة خفيفة للمحلات وأجواء جينزا؛ لا توجد فعالية إضافية أو حجز محدد لهذه التمشية في الخطة.</p></details><a class="day-small-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=35.671735%2C139.7650442&amp;destination=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi&amp;travelmode=walking" target="_blank" rel="noopener">العودة للفندق ↗</a></section></div></div><footer class="day-footer"><a class="day-full-route" href="https://www.google.com/maps/dir/?api=1&amp;origin=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi&amp;destination=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi&amp;travelmode=walking&amp;waypoints=Cafe+La+Boheme+Ginza%2C+6-4-1+Ginza%7C35.671735%2C139.7650442" target="_blank" rel="noopener">مسار اليوم كاملًا ↗</a><p>المسار أعلاه لجولة المشي من الفندق والعودة إليه؛ انتقال المطار له رابط مستقل عند الفندق.</p><details class="day-sources"><summary>مصادر المعلومات والصور</summary><p><a href="https://www.hankyu-hotel.com/en/hotel/dh/dhtokyo/info" target="_blank" rel="noopener">الفندق الرسمي</a> · <a href="https://boheme.jp/ginza/" target="_blank" rel="noopener">المطعم الرسمي</a></p><p>صور: Wikimedia Commons (ناريتا)، on-sen.work (الفندق)، Tabelog (المطعم)، MATCHA (جينزا). الصور للتعريف بالأماكن.</p></details></footer></article>
   </main>
 
@@ -1427,7 +1458,10 @@ travelSections["راحة القدم بعد المشي"] = "<div class=\"foot-pro
       savedScrollY = window.scrollY;
       lastTrigger = document.activeElement;
       document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modalIcon').textContent = icon;
+      const trigger = document.activeElement.closest('.folder-item');
+      const sectionIcon = trigger?.querySelector('.folder-icon');
+      document.getElementById('modalIcon').innerHTML = sectionIcon ? sectionIcon.innerHTML : '';
+      if (trigger) lastTrigger = trigger;
       
       const isConvenience = (title === 'Convenience Store Trending');
       if (isConvenience) {
@@ -1439,6 +1473,16 @@ travelSections["راحة القدم بعد المشي"] = "<div class=\"foot-pro
       const body = document.getElementById('modalBody');
       const rawContent = travelSections[title];
       body.innerHTML = isConvenience ? formatConvenienceStore(rawContent) : rawContent;
+      if (!isConvenience && title !== 'راحة القدم بعد المشي') {
+        body.querySelectorAll(':scope > p').forEach(p => p.classList.add('info-point'));
+      }
+      body.querySelectorAll('.foot-products article img').forEach(img => {
+        img.tabIndex = 0;
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', 'تكبير ' + img.alt);
+        img.addEventListener('click', () => openLightbox(img.src, img.alt));
+        img.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(img.src, img.alt); } });
+      });
       
       // Bind click on figures to open Lightbox
       body.querySelectorAll('figure img').forEach(img => {
