@@ -6,7 +6,7 @@
   <title>Japan Honeymoon — رحلة اليابان الخاصة</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Lalezar&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -1419,11 +1419,22 @@ b.classList.remove('meet-glow');void b.offsetWidth;b.classList.add('meet-glow');
 </style>
 <style id="ginza-shopping-css">
 .gs{padding:18px 12px 16px!important;background:linear-gradient(180deg,#bfe3f7 0,#e6f4fb 150px,#fbf4e8 330px)!important}
-.gs-banner{position:relative;text-align:center;margin:4px 18px 18px;padding:12px 16px 10px;background:#fff6e0;border:2px solid #e8cf98;border-radius:10px;box-shadow:0 4px 0 #e3c78a}
-.gs-banner::before,.gs-banner::after{content:"";position:absolute;top:14px;width:22px;height:34px;background:#f0dcae;z-index:-1}
-.gs-banner::before{right:-16px;clip-path:polygon(0 0,100% 0,60% 50%,100% 100%,0 100%)}.gs-banner::after{left:-16px;clip-path:polygon(0 0,100% 0,100% 100%,0 100%,40% 50%)}
-.gs-banner h2{display:flex;align-items:center;justify-content:center;gap:8px;margin:0;font-size:1.55rem;color:#2f2018}
-.gs-banner .kd-flag{display:inline-block}.gs-banner p{margin:4px 0 0;color:#b8322a;font-size:.86rem}
+.gs-banner{position:relative;text-align:center;margin:8px 6px 22px;padding:14px 6px 6px;background:none;border:0;box-shadow:none}
+.gs-banner::before,.gs-banner::after{display:none}
+.gs-title{margin:0;display:grid;justify-items:center;gap:0;font-family:'Lalezar','IBM Plex Sans Arabic',cursive;font-weight:400;line-height:1}
+.gs-title i{display:inline-block;font-style:normal;transform:rotate(var(--r,0deg)) translateY(var(--y,0px))}
+.gs-l1{display:flex;gap:.14em;font-size:3rem;color:var(--kd-red);letter-spacing:.01em;transform:rotate(-1.6deg);text-shadow:0 2px 0 #fff6}
+.gs-l2{display:flex;gap:.18em;font-size:2.3rem;color:var(--kd-ink);transform:rotate(1.1deg);text-shadow:0 2px 0 #fff5}
+.gs-l3{margin:11px 0 8px;padding:5px 30px;border-radius:999px;background:var(--kd-ink);color:var(--kd-card);font-size:1.3rem;transform:rotate(-1.4deg);box-shadow:0 3px 0 #00000026}
+.gs-l4{display:flex;align-items:center;gap:11px;font-size:1.2rem;color:var(--kd-red);transform:rotate(.7deg)}
+.gs-l4 .gs-ray{width:27px;height:20px;color:var(--kd-red);flex:0 0 auto}
+.gs-ray-r{transform:scaleX(-1)}
+.gs-spark{position:absolute;color:var(--kd-ink);pointer-events:none;opacity:.9}
+.gs-spark-1{width:19px;top:0;right:13%}
+.gs-spark-2{width:13px;top:38px;left:8%;color:var(--kd-red)}
+.gs-spark-3{width:16px;bottom:14px;right:5%}
+.gs-spark-4{width:11px;bottom:40px;left:15%;color:var(--kd-red)}
+@media (max-width:420px){.gs-l1{font-size:2.35rem}.gs-l2{font-size:1.8rem}.gs-l3{font-size:1.08rem;padding:4px 22px}.gs-l4{font-size:1rem;gap:8px}.gs-l4 .gs-ray{width:21px;height:16px}.gs-spark-1{width:15px}.gs-spark-3{width:13px}}
 .gs-sec{position:relative;border-radius:18px;padding:30px 10px 10px;margin:22px 0 0;background:var(--gs-bg);border:2px solid var(--gs-bd)}
 .gs-sun{--gs-bg:#fff8e6;--gs-bd:#f1d58f;--gs-c:#f0b429}.gs-rose{--gs-bg:#fdeef0;--gs-bd:#f4c2c8;--gs-c:#ef8394}
 .gs-mint{--gs-bg:#eef7ec;--gs-bd:#bfdcbc;--gs-c:#7cb66f}.gs-lilac{--gs-bg:#f3eefa;--gs-bd:#d3c4ea;--gs-c:#a58bd0}
@@ -1690,7 +1701,7 @@ b.classList.remove('meet-glow');void b.offsetWidth;b.classList.add('meet-glow');
 </div>
 </article>
 <article id="ginza-shopping" class="kd gs" aria-labelledby="gs-title">
-<header class="gs-banner"><i class="kd-flag" aria-hidden="true"></i><h2 id="gs-title">دليل التسوق في جينزا</h2><p>اليوم الثاني · <bdi dir="ltr">10:00–11:00</bdi> تفتح المحلات</p></header>
+<header class="gs-banner"><svg class="gs-spark gs-spark-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1.3 6.6 4.5 9.8 12 12-7.5 2.2-10.7 5.4-12 12-1.3-6.6-4.5-9.8-12-12C7.5 9.8 10.7 6.6 12 0Z"/></svg><svg class="gs-spark gs-spark-2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1.3 6.6 4.5 9.8 12 12-7.5 2.2-10.7 5.4-12 12-1.3-6.6-4.5-9.8-12-12C7.5 9.8 10.7 6.6 12 0Z"/></svg><svg class="gs-spark gs-spark-3" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1.3 6.6 4.5 9.8 12 12-7.5 2.2-10.7 5.4-12 12-1.3-6.6-4.5-9.8-12-12C7.5 9.8 10.7 6.6 12 0Z"/></svg><svg class="gs-spark gs-spark-4" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1.3 6.6 4.5 9.8 12 12-7.5 2.2-10.7 5.4-12 12-1.3-6.6-4.5-9.8-12-12C7.5 9.8 10.7 6.6 12 0Z"/></svg><h2 id="gs-title" class="gs-title"><span class="gs-l1"><i style="--r:-6deg;--y:3px">دليل</i><i style="--r:5deg;--y:-4px">التسوق</i></span><span class="gs-l2"><i style="--r:4deg;--y:2px">في</i><i style="--r:-4deg;--y:-3px">جينزا</i></span><span class="gs-l3">اليوم الثاني</span><span class="gs-l4"><svg class="gs-ray" viewBox="0 0 22 18" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M3 14 9 4"/><path d="M10 15 16 5"/><path d="M17 16 21 10"/></g></svg><span class="gs-l4t">تفتح المحلات <bdi dir="ltr">10:00–11:00</bdi></span><svg class="gs-ray gs-ray-r" viewBox="0 0 22 18" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M3 14 9 4"/><path d="M10 15 16 5"/><path d="M17 16 21 10"/></g></svg></span></h2></header>
 <section class="gs-sec gs-sun"><h3 class="gs-rib"><span>1</span>مشوار جينزا</h3>
 <button type="button" class="gs-walk" onclick="kdOpen(this)" aria-label="تكبير خريطة مشوار جينزا"><img src="assets/days/day2-walk.webp" alt="خريطة مشوار محلات جينزا" loading="lazy" width="1400" height="788"></button>
 <ol class="gs-pins"><li><a href="https://maps.app.goo.gl/XqX1D7AvxmnhhTSe9" target="_blank" rel="noopener"><bdi>Mitsukoshi</bdi></a></li><li><a href="https://maps.app.goo.gl/hrs6W8Cfd6dj5cZZ9" target="_blank" rel="noopener"><bdi>Wako</bdi></a></li><li><a href="https://maps.app.goo.gl/cDNMaqxPQi9DVgm56" target="_blank" rel="noopener"><bdi>Onitsuka Tiger</bdi></a></li><li><a href="https://maps.app.goo.gl/ocQ5cLPjCTF1DxXW9" target="_blank" rel="noopener"><bdi>Akebono</bdi></a></li><li><a href="https://maps.app.goo.gl/2nrDDgbKV7if2oPC8" target="_blank" rel="noopener"><bdi>UNIQLO</bdi></a></li></ol></section>
