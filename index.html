@@ -1248,6 +1248,70 @@
 @media(max-width:580px){.needs-page-frame .needs-header{padding:24px 18px 20px}.needs-page-frame .needs-title{font-size:28px!important}.needs-page-frame .folders-grid{padding:12px;gap:8px!important}.needs-page-frame .folder-body{grid-template-columns:minmax(0,1fr);padding:37px 12px 28px!important;min-height:116px!important;align-content:start}.needs-page-frame .folder-icon{position:absolute;top:9px;left:10px;width:28px;height:28px}.needs-page-frame .folder-icon svg{width:20px;height:20px}.needs-page-frame .folder-name{font-size:16px!important}.needs-page-frame .folder-hint{font-size:12px!important}.needs-page-frame .section-number{top:12px;right:12px}.needs-page-frame .foot-card .folder-body{min-height:104px!important}.modal-sheet{width:100%;height:100dvh;max-height:100dvh;border-radius:0}.modal-title{font-size:18px}.modal-body{padding:16px 14px 28px}.foot-products article{grid-template-columns:90px minmax(0,1fr);gap:12px;padding:12px}.foot-products article img{width:90px;height:130px}.app-card{align-items:flex-start}.app-icon{width:44px;height:44px;flex-shrink:0}}
 @media(prefers-reduced-motion:reduce){.folder-item,.modal-overlay,.modal-sheet{animation:none!important;transition:none!important}}
 
+@media(min-width:700px){.posters-deck:has(.kd){max-width:736px}.posters-deck>.poster-frame,.posters-deck>.needs-page-frame{max-width:580px}}
+/* ===== Daily program template (shared by every day page) ===== */
+.kd{--kd-red:#9b2420;--kd-ink:#2b241e;--kd-muted:#7a6a59;--kd-line:#e2d3bc;--kd-card:#fffaf2;--kd-gap:14px;--kd-left:34%;
+ position:relative;isolation:isolate;width:100%;max-width:736px;margin:0 auto;padding:28px 22px 22px;background:#f8efdf;border:1px solid var(--kd-line);border-radius:16px;box-shadow:0 14px 38px #5a3a1c1a;color:var(--kd-ink);overflow:hidden;scroll-margin-top:20px;direction:rtl;text-align:right;font-family:'IBM Plex Sans Arabic','Plus Jakarta Sans',sans-serif}
+.kd::before{content:'';position:absolute;inset:0;z-index:-1;opacity:.55;background:
+ radial-gradient(circle at 12% 30%,#cfe0c4 0 46px,transparent 47px),radial-gradient(circle at 22% 72%,#d6e5cb 0 60px,transparent 61px),radial-gradient(circle at 86% 88%,#d9e6cf 0 40px,transparent 41px),
+ linear-gradient(115deg,transparent 0 48%,#c9dfe6 48% 49.2%,transparent 49.2%),linear-gradient(72deg,transparent 0 9%,#c9dfe6 9% 10.4%,transparent 10.4%),
+ repeating-linear-gradient(0deg,transparent 0 58px,#eadcc6 58px 59px),repeating-linear-gradient(90deg,transparent 0 58px,#eadcc6 58px 59px)}
+.kd bdi{unicode-bidi:isolate}
+.kd-head{display:grid;gap:4px;padding-bottom:16px;margin-bottom:12px;border-bottom:1px solid var(--kd-line)}
+.kd-kicker{font-size:12px;font-weight:700;color:var(--kd-red);letter-spacing:.5px}.kd-kicker span{opacity:.5}
+.kd-title{margin:0;line-height:1;display:grid;gap:6px}
+.kd-city{font-family:Georgia,'Times New Roman',serif;font-size:76px;font-weight:700;color:#8a1717;letter-spacing:-3px;direction:ltr;text-align:right}
+.kd-sub{font-size:26px;font-weight:700;line-height:1.4;display:flex;align-items:center;gap:10px}
+.kd-flag{display:inline-block;width:34px;height:24px;border:1px solid var(--kd-line);border-radius:4px;background:radial-gradient(circle,#bc1c1c 0 6px,#fff 6.5px);box-shadow:0 2px 4px #0001}
+.kd-date{font-size:14px;color:var(--kd-muted);font-weight:500}
+.kd-ribbon{justify-self:start;margin-top:4px;padding:6px 16px;border-radius:999px;background:#f1e1c6;border:1px solid #dcc6a3;font-size:13px;font-weight:600;color:#5a4634}
+.kd-body{position:relative;display:grid;gap:var(--kd-gap)}
+.kd-line{position:absolute;top:0;bottom:0;left:calc(var(--kd-left) - 34px);width:40px;height:100%;z-index:0;pointer-events:none}
+.kd-row{position:relative;z-index:1;display:grid;grid-template-columns:var(--kd-left) 1fr;direction:ltr;gap:16px;align-items:center}
+.kd-row>*{direction:rtl;min-width:0}
+.kd-stop{position:relative;display:grid;justify-items:center;gap:6px;padding-left:4px;padding-right:22px}
+.kd-num,.kd-badge{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--kd-red);color:#fff;font:700 14px/1 'Plus Jakarta Sans',sans-serif;border:2px solid #fff;box-shadow:0 0 0 1px #c9a985,0 3px 6px #0002}
+.kd-num{position:absolute;right:-6px;top:50%;transform:translateY(-50%);z-index:2}
+.kd-pic{margin:0;width:100%;max-width:150px;background:#fffaf2;border:1px solid var(--kd-line);border-radius:12px;padding:5px;box-shadow:0 4px 10px #6d482a14;cursor:zoom-in}
+.kd-pic img{display:block;width:100%!important;height:92px!important;max-height:none!important;aspect-ratio:auto;object-fit:cover;border-radius:8px}
+.kd-pic figcaption{font:600 11px/1.3 'Plus Jakarta Sans',sans-serif;text-align:center;padding:5px 2px 1px;color:var(--kd-ink)}
+.kd-move{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:#5a4634;background:#fffaf2;border:1px solid var(--kd-line);border-radius:8px;padding:3px 8px;white-space:nowrap}
+.kd-move b{font-weight:400}
+.kd-card{position:relative;display:grid;grid-template-columns:1fr 96px;grid-template-areas:"txt thumb";gap:12px;padding:14px;background:var(--kd-card);border:1px solid var(--kd-line);border-radius:14px;box-shadow:0 5px 14px #6d482a12}
+.kd-badge{position:absolute;top:-10px;right:-10px}
+.kd-thumb{grid-area:thumb;width:96px!important;height:96px!important;object-fit:cover;border-radius:10px;cursor:zoom-in}
+.kd-txt{grid-area:txt;display:grid;gap:6px;align-content:start}
+.kd-card h3{margin:0;font-size:18px;font-weight:700;line-height:1.35}
+.kd-map{justify-self:start;font:600 13px/1.4 'Plus Jakarta Sans','IBM Plex Sans Arabic',sans-serif;color:var(--kd-red);text-decoration:none;border-bottom:1px dashed #c98f86}
+.kd-time{justify-self:start;font-size:12px;font-weight:600;color:#5a4634;background:#f3e6cf;border-radius:7px;padding:3px 8px}
+.kd-card ul{margin:2px 0 0;padding:0 16px 0 0;display:grid;gap:3px;font-size:14px;line-height:1.75}
+.kd-card li::marker{color:var(--kd-red)}
+.kd-card li a,.kd-link{color:var(--kd-red);font-weight:600}
+.kd-link{justify-self:start;font-size:12px;text-decoration:none;padding:4px 10px;border:1px solid #dcbfa8;border-radius:999px;background:#fff}
+.kd-foot{display:grid;grid-template-columns:var(--kd-left) 1fr;direction:ltr;gap:16px;margin-top:18px;align-items:start}
+.kd-foot>*{direction:rtl;min-width:0}
+.kd-tips{background:var(--kd-card);border:1px solid var(--kd-line);border-radius:14px;padding:12px 14px}
+.kd-tips h4{display:inline-block;margin:0 0 6px;font-size:12px;color:#fff;background:var(--kd-red);border-radius:999px;padding:3px 12px}
+.kd-tips ul{margin:0;padding:0 16px 0 0;font-size:12.5px;line-height:1.8}
+.kd-actions{display:grid;gap:8px}
+.kd-route{display:block;text-align:center;padding:14px;border-radius:14px;background:linear-gradient(#a3272a,#7f1a1b);color:#fff;font-weight:700;font-size:16px;text-decoration:none;box-shadow:0 6px 14px #7f1a1b40}
+.kd-note{font-size:11.5px;color:var(--kd-muted);text-align:center;margin:0}
+.kd-src{font-size:11.5px;color:var(--kd-muted)}.kd-src summary{cursor:pointer;color:var(--kd-red);font-weight:600}
+.kd a:focus-visible{outline:2px solid var(--kd-red);outline-offset:2px}
+@media(max-width:600px){
+ .kd{padding:22px 14px 18px;border-radius:12px}
+ .kd-city{font-size:58px}.kd-sub{font-size:21px}
+ .kd-row{grid-template-columns:30px 1fr;gap:10px;align-items:start}
+ .kd-line{left:-5px}
+ .kd-stop{padding:0;justify-items:start}.kd-pic,.kd-move{display:none}
+ .kd-num{position:static;transform:none;margin-top:12px}
+ .kd-badge{display:none}
+ .kd-card{grid-template-columns:1fr;grid-template-areas:"thumb" "txt";padding:10px 12px 14px}
+ .kd-thumb{width:100%!important;height:170px!important}
+ .kd-card h3{font-size:17px}
+ .kd-foot{grid-template-columns:1fr;direction:rtl}
+ .kd-foot .kd-actions{order:-1}
+}
 </style>
 </head>
 <body>
@@ -1384,7 +1448,97 @@
 </div>
 </article>
 
-<article id="day-2026-11-29" class="trip-day arrival-poster"><div class="poster-composition"><div class="poster-left"><header class="day-heading"><span class="day-kicker">اليوم الأول · TOKYO</span><p class="day-date">الأحد ٢٩ نوفمبر ٢٠٢٦</p><h2><span class="tokyo-display">TOKYO</span><span class="arrival-display">أول يوم في اليابان <b aria-hidden="true">●</b></span></h2><p class="day-intro">وصول هادئ، راحة، وأول تمشية في جينزا.</p></header><div class="poster-landmarks"><svg class="poster-curve" viewBox="0 0 300 850" preserveAspectRatio="none" aria-hidden="true"><path d="M20 75 C5 140 5 190 23 265 S6 360 20 440 S5 550 24 615 S5 735 20 800" stroke="#fff9ed" stroke-width="9" fill="none"/><path d="M20 75 C5 140 5 190 23 265 S6 360 20 440 S5 550 24 615 S5 735 20 800" stroke="#9d2925" stroke-width="3" stroke-dasharray="7 6" fill="none" stroke-linecap="round"/></svg><figure class="day-place poster-stop-1"><span class="day-marker">1</span><img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Narita_Airport_Terminal_2_exterior.jpg" alt="Narita Airport — Terminal 2" loading="lazy" referrerpolicy="no-referrer"><figcaption><a href="https://www.google.com/maps/search/?api=1&amp;query=Narita+Airport+Terminal+2" target="_blank" rel="noopener">Narita Airport — Terminal 2 ↗</a><span>مطار ناريتا · المبنى ٢</span></figcaption></figure><figure class="day-place poster-stop-2"><span class="day-marker">2</span><img src="https://on-sen.work/_astro/2876_ZVTOve.webp" alt="Dai-ichi Hotel Tokyo" loading="lazy" referrerpolicy="no-referrer"><figcaption><a href="https://www.google.com/maps/search/?api=1&amp;query=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi" target="_blank" rel="noopener">Dai-ichi Hotel Tokyo ↗</a><span>الفندق · شيمباشي</span></figcaption></figure><figure class="day-place poster-stop-3"><span class="day-marker">3</span><img src="https://tblg.k-img.com/restaurant/images/Rvw/280891/640x640_rect_191ac8c98cfc3b6a72a537e3d29149a8.jpg" alt="Café La Bohème Ginza" loading="lazy" referrerpolicy="no-referrer"><figcaption><a href="https://www.google.com/maps/search/?api=1&amp;query=Cafe+La+Boheme+Ginza%2C+6-4-1+Ginza" target="_blank" rel="noopener">Café La Bohème Ginza ↗</a><span>مطعم إيطالي · مقترح</span></figcaption></figure><figure class="day-place poster-stop-4"><span class="day-marker">4</span><img src="https://place.matcha-jp.com/resize/720x2000/2024/03/19-18-12-18-113dc12a8e50f4e15e011219b35e6e95b19.webp" alt="Ginza · Chuo-dori / Wako" loading="lazy" referrerpolicy="no-referrer"><figcaption><a href="https://www.google.com/maps/search/?api=1&amp;query=35.671735%2C139.7650442" target="_blank" rel="noopener">Ginza · Chuo-dori / Wako ↗</a><span>تمشية جينزا</span></figcaption></figure></div><aside class="poster-tip"><strong>قبل الانطلاق</strong><p>جهّزوا رمز الدخول، واتبعوا نقطة لقاء السائق في قسيمة الحجز.</p></aside></div><div class="poster-right"><section class="day-note poster-note-1"><img class="day-note-photo" src="https://upload.wikimedia.org/wikipedia/commons/7/76/Narita_Airport_Terminal_2_exterior.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"><div class="day-note-title"><span>01</span><h3>الوصول إلى اليابان</h3></div><span class="arrival-time">١١:٥٥ صباحًا · بتوقيت اليابان</span><p>اتبعوا لوحات Arrivals، ثم الجوازات، واستلام الشنط والجمارك.</p><details><summary>التفاصيل</summary><p>جهّزوا جواز السفر ورمز Visit Japan Web لكل شخص. لا تتجهوا إلى International Transfer.</p><p>للقاء السائق، اتبعوا نقطة اللقاء الموضّحة في قسيمة النقل وتواصلوا معه؛ لا تعتمدوا على نقطة عامة داخل المطار.</p></details></section><section class="day-note poster-note-2"><img class="day-note-photo" src="https://on-sen.work/_astro/2876_ZVTOve.webp" alt="" loading="lazy" referrerpolicy="no-referrer"><div class="day-note-title"><span>02</span><h3>الوصول إلى الفندق</h3></div><p>توجّهوا إلى الفندق، ثم تسجيل الدخول والراحة بعد السفر.</p><details><summary>التفاصيل</summary><p>تسجيل الدخول المعتاد من ٣:٠٠ عصرًا، حسب شروط حجزكم.</p><p>للماء والسناكات: <a href="https://www.google.com/maps/search/?api=1&query=7-Eleven+1-13-7+Shinbashi+Tokyo" target="_blank" rel="noopener">7-Eleven — فرع شيمباشي ١-١٣-٧</a>.</p></details><a class="day-small-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Narita+Airport+Terminal+2&amp;destination=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi&amp;travelmode=driving" target="_blank" rel="noopener">المسار من المطار ↗</a></section><section class="day-note poster-note-3"><img class="day-note-photo" src="https://tblg.k-img.com/restaurant/images/Rvw/280891/640x640_rect_191ac8c98cfc3b6a72a537e3d29149a8.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"><div class="day-note-title"><span>03</span><h3>وجبة في جينزا</h3></div><p>مطعم إيطالي مقترح من الخطة؛ اختاروا الوجبة حسب وقت وصولكم واستعدادكم للخروج.</p><details><summary>التفاصيل</summary><p>العنوان: 6-4-1 Ginza، مبنى Tokaido Ginza، الطابق B1.</p><p>المطعم غير موثّق حلال؛ تأكدوا من مكوّنات الطلب والصلصات.</p><p><a href="https://boheme.jp/ginza/" target="_blank" rel="noopener">الموقع الرسمي للمطعم</a></p></details></section><section class="day-note poster-note-4"><img class="day-note-photo" src="https://place.matcha-jp.com/resize/720x2000/2024/03/19-18-12-18-113dc12a8e50f4e15e011219b35e6e95b19.webp" alt="" loading="lazy" referrerpolicy="no-referrer"><div class="day-note-title"><span>04</span><h3>أول مساء في طوكيو</h3></div><p>تمشية في شارع Chuo-dori قرب برج ساعة Wako، ثم العودة للفندق حسب طاقتكم. <a href="https://www.google.com/maps/dir/?api=1&origin=Cafe+La+Boheme+Ginza%2C+6-4-1+Ginza&destination=35.671735%2C139.7650442&travelmode=walking" target="_blank" rel="noopener">المشي من المطعم ↗</a></p><details><summary>التفاصيل</summary><p>جولة خفيفة للمحلات وأجواء جينزا؛ لا توجد فعالية إضافية أو حجز محدد لهذه التمشية في الخطة.</p></details><a class="day-small-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=35.671735%2C139.7650442&amp;destination=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi&amp;travelmode=walking" target="_blank" rel="noopener">العودة للفندق ↗</a></section></div></div><footer class="day-footer"><a class="day-full-route" href="https://www.google.com/maps/dir/?api=1&amp;origin=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi&amp;destination=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi&amp;travelmode=walking&amp;waypoints=Cafe+La+Boheme+Ginza%2C+6-4-1+Ginza%7C35.671735%2C139.7650442" target="_blank" rel="noopener">مسار اليوم كاملًا ↗</a><p>المسار أعلاه لجولة المشي من الفندق والعودة إليه؛ انتقال المطار له رابط مستقل عند الفندق.</p><details class="day-sources"><summary>مصادر المعلومات والصور</summary><p><a href="https://www.hankyu-hotel.com/en/hotel/dh/dhtokyo/info" target="_blank" rel="noopener">الفندق الرسمي</a> · <a href="https://boheme.jp/ginza/" target="_blank" rel="noopener">المطعم الرسمي</a></p><p>صور: Wikimedia Commons (ناريتا)، on-sen.work (الفندق)، Tabelog (المطعم)، MATCHA (جينزا). الصور للتعريف بالأماكن.</p></details></footer></article>
+<article id="day-2026-11-29" class="kd" aria-labelledby="kd1-title">
+<header class="kd-head">
+  <p class="kd-kicker">اليوم الأول <span>·</span> <bdi>DAY 1</bdi></p>
+  <h2 id="kd1-title" class="kd-title"><bdi class="kd-city">TOKYO</bdi><span class="kd-sub">أول يوم في اليابان <i class="kd-flag" aria-hidden="true"></i></span></h2>
+  <p class="kd-date">الأحد ٢٩ نوفمبر ٢٠٢٦</p>
+  <p class="kd-ribbon">وصول هادئ، راحة، وأول تمشية في جينزا</p>
+</header>
+
+<div class="kd-body">
+  <svg class="kd-line" viewBox="0 0 40 1000" preserveAspectRatio="none" aria-hidden="true"><path d="M20 30 C4 160 36 300 20 420 S4 700 20 970" fill="none" stroke="#fffaf0" stroke-width="7"/><path d="M20 30 C4 160 36 300 20 420 S4 700 20 970" fill="none" stroke="#9b2420" stroke-width="2.6" stroke-dasharray="7 6" stroke-linecap="round"/></svg>
+
+  <div class="kd-row">
+    <div class="kd-stop"><span class="kd-num">1</span>
+      <figure class="kd-pic"><img src="assets/days/day1-narita.webp" alt="Narita Airport Terminal 2" width="720" height="480" loading="lazy"><figcaption><bdi>Narita T2</bdi></figcaption></figure>
+      <span class="kd-move"><b aria-hidden="true">🚐</b>بالسيارة مع السائق</span>
+    </div>
+    <section class="kd-card">
+      <span class="kd-badge">1</span>
+      <img class="kd-thumb" src="assets/days/day1-narita.webp" alt="" width="720" height="480" loading="lazy">
+      <div class="kd-txt">
+        <h3>الوصول إلى اليابان</h3>
+        <a class="kd-map" href="https://www.google.com/maps/search/?api=1&amp;query=Narita+Airport+Terminal+2" target="_blank" rel="noopener"><bdi>Narita Airport — Terminal 2</bdi> ↗</a>
+        <span class="kd-time">🕒 <bdi dir="ltr">11:55</bdi> صباحًا · بتوقيت اليابان</span>
+        <ul><li>اتبعوا لوحات <bdi>Arrivals</bdi> ثم الجوازات والشنط والجمارك.</li><li>جهّزوا الجواز ورمز <bdi>Visit Japan Web</bdi> لكل شخص.</li><li>لا تتجهوا إلى <bdi>International Transfer</bdi>.</li><li>للقاء السائق اتبعوا نقطة اللقاء في قسيمة النقل.</li></ul>
+      </div>
+    </section>
+  </div>
+
+  <div class="kd-row">
+    <div class="kd-stop"><span class="kd-num">2</span>
+      <figure class="kd-pic"><img src="assets/days/day1-hotel.webp" alt="Dai-ichi Hotel Tokyo" width="512" height="512" loading="lazy"><figcaption><bdi>Dai-ichi Hotel</bdi></figcaption></figure>
+      <span class="kd-move"><b aria-hidden="true">🚶</b>مشي ٨ دقائق</span>
+    </div>
+    <section class="kd-card">
+      <span class="kd-badge">2</span>
+      <img class="kd-thumb" src="assets/days/day1-hotel.webp" alt="" width="512" height="512" loading="lazy">
+      <div class="kd-txt">
+        <h3>الوصول إلى الفندق</h3>
+        <a class="kd-map" href="https://www.google.com/maps/search/?api=1&amp;query=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi" target="_blank" rel="noopener"><bdi>Dai-ichi Hotel Tokyo</bdi> ↗</a>
+        <span class="kd-time">🕒 تسجيل الدخول من ٣:٠٠ عصرًا</span>
+        <ul><li>تسجيل الدخول والراحة بعد السفر.</li><li>أقرب <a href="https://www.google.com/maps/search/?api=1&amp;query=7-Eleven+1-13-7+Shinbashi+Tokyo" target="_blank" rel="noopener">بقالة <bdi>7-Eleven</bdi></a> مشي ٣ دقائق للماء والسناكات.</li></ul>
+        <a class="kd-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Narita+Airport+Terminal+2&amp;destination=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi&amp;travelmode=driving" target="_blank" rel="noopener">المسار من المطار ↗</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="kd-row">
+    <div class="kd-stop"><span class="kd-num">3</span>
+      <figure class="kd-pic"><img src="assets/days/day1-boheme.webp" alt="Café La Bohème Ginza" width="640" height="480" loading="lazy"><figcaption><bdi>La Bohème</bdi></figcaption></figure>
+      <span class="kd-move"><b aria-hidden="true">🚶</b>مشي قصير</span>
+    </div>
+    <section class="kd-card">
+      <span class="kd-badge">3</span>
+      <img class="kd-thumb" src="assets/days/day1-boheme.webp" alt="" width="640" height="480" loading="lazy">
+      <div class="kd-txt">
+        <h3>وجبة في جينزا</h3>
+        <a class="kd-map" href="https://www.google.com/maps/search/?api=1&amp;query=Cafe+La+Boheme+Ginza%2C+6-4-1+Ginza" target="_blank" rel="noopener"><bdi>Café La Bohème Ginza</bdi> ↗</a>
+        <span class="kd-time">🚶 مشي ٨ دقائق من الفندق</span>
+        <ul><li>مطعم إيطالي مقترح، اختاروا الوقت حسب طاقتكم.</li><li>العنوان: <bdi>6-4-1 Ginza</bdi>، الطابق <bdi>B1</bdi>.</li><li>غير موثّق حلال؛ تأكدوا من المكوّنات والصلصات.</li></ul>
+        <a class="kd-link" href="https://boheme.jp/ginza/" target="_blank" rel="noopener">موقع المطعم ↗</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="kd-row">
+    <div class="kd-stop"><span class="kd-num">4</span>
+      <figure class="kd-pic"><img src="assets/days/day1-wako.webp" alt="Ginza Wako clock tower" width="720" height="480" loading="lazy"><figcaption><bdi>Wako · Ginza</bdi></figcaption></figure>
+    </div>
+    <section class="kd-card">
+      <span class="kd-badge">4</span>
+      <img class="kd-thumb" src="assets/days/day1-wako.webp" alt="" width="720" height="480" loading="lazy">
+      <div class="kd-txt">
+        <h3>أول مساء في طوكيو</h3>
+        <a class="kd-map" href="https://www.google.com/maps/search/?api=1&amp;query=35.671735%2C139.7650442" target="_blank" rel="noopener"><bdi>Ginza · Chuo-dori / Wako</bdi> ↗</a>
+        <span class="kd-time">🌙 المساء · حسب طاقتكم</span>
+        <ul><li>شارع التسوق الرئيسي في جينزا: محلات وماركات ومجمعات كبيرة.</li><li>يمر بجانب مبنى <bdi>Wako</bdi> الشهير ببرج الساعة.</li></ul>
+        <a class="kd-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=35.671735%2C139.7650442&amp;destination=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi&amp;travelmode=walking" target="_blank" rel="noopener">العودة للفندق ↗</a>
+      </div>
+    </section>
+  </div>
+</div>
+
+<footer class="kd-foot">
+  <aside class="kd-tips"><h4>نصائح سريعة</h4><ul><li>جهّزوا رمز الدخول قبل النزول من الطيارة.</li><li>اتبعوا نقطة لقاء السائق في قسيمة الحجز.</li><li>خلّوا أول يوم خفيف وارتاحوا بدري.</li></ul></aside>
+  <div class="kd-actions">
+    <a class="kd-route" href="https://www.google.com/maps/dir/?api=1&amp;origin=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi&amp;destination=Dai-ichi+Hotel+Tokyo%2C+1-2-6+Shinbashi&amp;travelmode=walking&amp;waypoints=Cafe+La+Boheme+Ginza%2C+6-4-1+Ginza%7C35.671735%2C139.7650442" target="_blank" rel="noopener">مسار المشي كاملًا ↗</a>
+    <p class="kd-note">المسار المرسوم تخطيطي للترتيب فقط؛ الخريطة الدقيقة في الروابط.</p>
+    <details class="kd-src"><summary>مصادر الصور</summary><p>Wikimedia Commons (ناريتا، وَاكو)، on-sen.work (الفندق)، Tabelog (المطعم).</p></details>
+  </div>
+</footer>
+</article>
   </main>
 
   <!-- ورقة الملف المنبثقة (Modal / Bottom Sheet) -->
@@ -1565,6 +1719,7 @@ travelSections["راحة القدم بعد المشي"] = "<div class=\"foot-pro
     <img class="lightbox-img" id="lightboxImg" src="" alt="معاينة مكبرة">
   </div>
 
+<script>document.querySelectorAll('.kd .kd-pic img,.kd .kd-thumb').forEach(function(im){im.addEventListener('click',function(){var a=im.alt||im.closest('.kd-card')?.querySelector('h3')?.textContent||'';if(typeof openLightbox==='function')openLightbox(im.src,a);});});</script>
 </body>
 </html>
 
